@@ -9,6 +9,10 @@ import warnings
 from scipy import sparse
 
 from sklearn.utils.testing import assert_equal
+<<<<<<< HEAD
+=======
+from sklearn.utils.testing import assert_false
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import assert_array_equal
 from sklearn.utils.testing import assert_array_almost_equal
 from sklearn.utils.testing import assert_raise_message
@@ -111,6 +115,18 @@ def test_cluster_intensity_tie():
     assert_array_equal(c2.labels_, [0, 0, 0, 1, 1, 1])
 
 
+def test_cluster_intensity_tie():
+    X = np.array([[1, 1], [2, 1], [1, 0],
+                  [4, 7], [3, 5], [3, 6]])
+    c1 = MeanShift(bandwidth=2).fit(X)
+
+    X = np.array([[4, 7], [3, 5], [3, 6],
+                  [1, 1], [2, 1], [1, 0]])
+    c2 = MeanShift(bandwidth=2).fit(X)
+    assert_array_equal(c1.labels_, [1, 1, 1, 0, 0, 0])
+    assert_array_equal(c2.labels_, [0, 0, 0, 1, 1, 1])
+
+
 def test_bin_seeds():
     # Test the bin seeding technique which can be used in the mean shift
     # algorithm
@@ -122,14 +138,22 @@ def test_bin_seeds():
     # found
     ground_truth = {(1., 1.), (2., 1.), (0., 0.)}
     test_bins = get_bin_seeds(X, 1, 1)
+<<<<<<< HEAD
     test_result = set(tuple(p) for p in test_bins)
+=======
+    test_result = set([tuple(p) for p in test_bins])
+>>>>>>> upstream/0.20.X
     assert len(ground_truth.symmetric_difference(test_result)) == 0
 
     # With a bin coarseness of 1.0 and min_bin_freq of 2, 2 bins should be
     # found
     ground_truth = {(1., 1.), (2., 1.)}
     test_bins = get_bin_seeds(X, 1, 2)
+<<<<<<< HEAD
     test_result = set(tuple(p) for p in test_bins)
+=======
+    test_result = set([tuple(p) for p in test_bins])
+>>>>>>> upstream/0.20.X
     assert len(ground_truth.symmetric_difference(test_result)) == 0
 
     # With a bin size of 0.01 and min_bin_freq of 1, 6 bins should be found

@@ -27,6 +27,10 @@ from sklearn.datasets.tests.test_common import check_return_X_y
 
 from sklearn.externals._pilutil import pillow_installed
 
+<<<<<<< HEAD
+=======
+from sklearn.utils.testing import assert_false
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import assert_equal
 from sklearn.utils.testing import assert_raises
 
@@ -124,6 +128,7 @@ def test_load_sample_images():
         res = load_sample_images()
         assert_equal(len(res.images), 2)
         assert_equal(len(res.filenames), 2)
+<<<<<<< HEAD
         images = res.images
 
         # assert is china image
@@ -132,6 +137,8 @@ def test_load_sample_images():
         # assert is flower image
         assert np.all(images[1][0, 0, :] ==
                       np.array([2, 19, 13], dtype=np.uint8))
+=======
+>>>>>>> upstream/0.20.X
         assert res.DESCR
     except ImportError:
         warnings.warn("Could not load sample images, PIL is not available.")

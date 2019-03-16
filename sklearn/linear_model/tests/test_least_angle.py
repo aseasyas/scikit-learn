@@ -9,7 +9,11 @@ from scipy import linalg
 from sklearn.model_selection import train_test_split
 from sklearn.utils.testing import assert_allclose
 from sklearn.utils.testing import assert_array_almost_equal
+<<<<<<< HEAD
 from sklearn.utils.testing import assert_equal
+=======
+from sklearn.utils.testing import assert_false
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import assert_less
 from sklearn.utils.testing import assert_greater
 from sklearn.utils.testing import assert_raises
@@ -75,6 +79,7 @@ def test_simple_precomputed():
         else:
             # no more than max_pred variables can go into the active set
             assert ocur == X.shape[1]
+<<<<<<< HEAD
 
 
 def _assert_same_lars_path_result(output1, output2):
@@ -100,6 +105,8 @@ def test_x_none_gram_none_raises_value_error():
     Xy = np.dot(X.T, y)
     assert_raises(ValueError, linear_model.lars_path, None, y, Gram=None,
                   Xy=Xy)
+=======
+>>>>>>> upstream/0.20.X
 
 
 def test_all_precomputed():
@@ -549,10 +556,17 @@ def test_estimatorclasses_positive_constraint():
         params = default_parameter.copy()
         params.update(estimator_parameter_map[estname])
         estimator = getattr(linear_model, estname)(positive=False, **params)
+<<<<<<< HEAD
         estimator.fit(X, y)
         assert estimator.coef_.min() < 0
         estimator = getattr(linear_model, estname)(positive=True, **params)
         estimator.fit(X, y)
+=======
+        estimator.fit(diabetes['data'], diabetes['target'])
+        assert estimator.coef_.min() < 0
+        estimator = getattr(linear_model, estname)(positive=True, **params)
+        estimator.fit(diabetes['data'], diabetes['target'])
+>>>>>>> upstream/0.20.X
         assert min(estimator.coef_) >= 0
 
 

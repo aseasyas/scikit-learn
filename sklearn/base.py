@@ -7,9 +7,20 @@ import copy
 import warnings
 from collections import defaultdict
 import platform
+<<<<<<< HEAD
 import inspect
 
 import numpy as np
+=======
+
+import numpy as np
+from scipy import sparse
+from .externals import six
+from .utils.fixes import signature
+from .utils import _IS_32BIT
+from . import __version__
+
+>>>>>>> upstream/0.20.X
 
 from . import __version__
 from sklearn.utils import _IS_32BIT
@@ -571,12 +582,15 @@ class MetaEstimatorMixin:
     """Mixin class for all meta estimators in scikit-learn."""
 
 
+<<<<<<< HEAD
 class MultiOutputMixin(object):
     """Mixin to mark estimators that support multioutput."""
     def _more_tags(self):
         return {'multioutput': True}
 
 
+=======
+>>>>>>> upstream/0.20.X
 class _UnstableArchMixin(object):
     """Mark estimators that are non-determinstic on 32bit or PowerPC"""
     def _more_tags(self):

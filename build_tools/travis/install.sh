@@ -140,6 +140,7 @@ except ImportError:
     pass
 "
 python setup.py develop
+<<<<<<< HEAD
 if [ $TRAVIS_OS_NAME = "linux" ]
 then
 	ccache --show-stats
@@ -149,3 +150,8 @@ fi
 
 # fast fail
 build_tools/travis/travis_fastfail.sh
+=======
+ccache --show-stats
+# Useful for debugging how ccache is used
+# cat $CCACHE_LOGFILE
+>>>>>>> upstream/0.20.X

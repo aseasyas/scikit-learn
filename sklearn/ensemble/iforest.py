@@ -5,6 +5,12 @@
 
 import numbers
 import numpy as np
+<<<<<<< HEAD
+=======
+from warnings import warn
+from sklearn.utils.fixes import euler_gamma
+
+>>>>>>> upstream/0.20.X
 from scipy.sparse import issparse
 from warnings import warn
 

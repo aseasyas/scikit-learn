@@ -1,6 +1,10 @@
 import pytest
 import numpy as np
 
+<<<<<<< HEAD
+=======
+from sklearn.utils.testing import assert_false
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import assert_equal
 from sklearn.utils.testing import assert_less
 from sklearn.utils.testing import assert_greater

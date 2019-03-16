@@ -829,6 +829,7 @@ def test_warm_start_multitask_lasso():
     clf2 = MultiTaskLasso(alpha=0.1, max_iter=10)
     ignore_warnings(clf2.fit)(X, Y)
     assert_array_almost_equal(clf2.coef_, clf.coef_)
+<<<<<<< HEAD
 
 
 @pytest.mark.parametrize('klass, n_classes, kwargs',
@@ -876,3 +877,5 @@ def test_sparse_input_convergence_warning():
         Lasso(max_iter=1000).fit(sparse.csr_matrix(X, dtype=np.float32), y)
 
     assert not record.list
+=======
+>>>>>>> upstream/0.20.X

@@ -51,6 +51,10 @@ from sklearn.base import (BaseEstimator, ClassifierMixin, ClusterMixin,
 from sklearn.utils import deprecated, IS_PYPY, _IS_32BIT
 from sklearn.utils._joblib import joblib
 from sklearn.utils._unittest_backport import TestCase
+<<<<<<< HEAD
+=======
+from sklearn.utils.fixes import signature
+>>>>>>> upstream/0.20.X
 
 additional_names_in_all = []
 try:

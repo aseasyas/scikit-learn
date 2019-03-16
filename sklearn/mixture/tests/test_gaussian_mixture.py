@@ -7,6 +7,7 @@ import copy
 import warnings
 import pytest
 
+import pytest
 import numpy as np
 from scipy import stats, linalg
 

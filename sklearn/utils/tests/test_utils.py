@@ -6,7 +6,11 @@ import numpy as np
 import scipy.sparse as sp
 
 from sklearn.utils.testing import (assert_equal, assert_raises,
+<<<<<<< HEAD
                                    assert_array_equal,
+=======
+                                   assert_almost_equal, assert_array_equal,
+>>>>>>> upstream/0.20.X
                                    SkipTest, assert_raises_regex,
                                    assert_warns_message, assert_no_warnings)
 from sklearn.utils import check_random_state

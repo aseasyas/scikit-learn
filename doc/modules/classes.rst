@@ -99,7 +99,6 @@ Classes
    cluster.AgglomerativeClustering
    cluster.Birch
    cluster.DBSCAN
-   cluster.OPTICS
    cluster.FeatureAgglomeration
    cluster.KMeans
    cluster.MiniBatchKMeans
@@ -1481,6 +1480,7 @@ Utilities from joblib:
 .. autosummary::
    :toctree: generated/
    :template: function.rst
+<<<<<<< HEAD
 
    utils.parallel_backend
    utils.register_parallel_backend
@@ -1489,6 +1489,33 @@ Recently deprecated
 ===================
 
 To be removed in 0.23
+=======
+
+   utils.parallel_backend
+   utils.register_parallel_backend
+
+Recently deprecated
+===================
+
+To be removed in 0.23
+---------------------
+
+.. autosummary::
+   :toctree: generated/
+   :template: deprecated_class.rst
+
+   utils.Memory
+   utils.Parallel
+
+.. autosummary::
+   :toctree: generated/
+   :template: deprecated_function.rst
+
+   utils.cpu_count
+   utils.delayed
+
+To be removed in 0.22
+>>>>>>> upstream/0.20.X
 ---------------------
 
 .. autosummary::
@@ -1525,6 +1552,12 @@ To be removed in 0.22
    :toctree: generated/
    :template: deprecated_function.rst
 
+<<<<<<< HEAD
    covariance.graph_lasso
    datasets.fetch_mldata
    datasets.mldata_filename
+=======
+   datasets.load_mlcomp
+   datasets.mldata_filename
+   linear_model.lasso_stability_path
+>>>>>>> upstream/0.20.X

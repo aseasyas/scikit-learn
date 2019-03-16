@@ -3,7 +3,12 @@ import numpy as np
 from sklearn.neural_network._stochastic_optimizers import (BaseOptimizer,
                                                            SGDOptimizer,
                                                            AdamOptimizer)
+<<<<<<< HEAD
 from sklearn.utils.testing import (assert_array_equal, assert_equal)
+=======
+from sklearn.utils.testing import (assert_array_equal, assert_false,
+                                   assert_equal)
+>>>>>>> upstream/0.20.X
 
 
 shapes = [(4, 6), (6, 8), (7, 8, 9)]

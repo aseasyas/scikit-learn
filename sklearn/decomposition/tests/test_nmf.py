@@ -9,6 +9,10 @@ from scipy.sparse import csc_matrix
 
 import pytest
 
+<<<<<<< HEAD
+=======
+from sklearn.utils.testing import assert_false
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import assert_raise_message, assert_no_warnings
 from sklearn.utils.testing import assert_warns_message
 from sklearn.utils.testing import assert_array_equal

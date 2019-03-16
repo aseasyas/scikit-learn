@@ -14,6 +14,10 @@ from sklearn.utils.testing import assert_raises
 from sklearn.utils.testing import assert_raises_regex
 from sklearn.utils.testing import assert_raise_message
 from sklearn.utils.testing import assert_equal
+<<<<<<< HEAD
+=======
+from sklearn.utils.testing import assert_false
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import assert_array_equal
 from sklearn.utils.testing import assert_array_almost_equal
 from sklearn.utils.testing import assert_dict_equal
@@ -409,7 +413,11 @@ def test_fit_predict_with_intermediate_fit_params():
                      clf__should_succeed=True)
     assert pipe.named_steps['transf'].fit_params['should_get_this']
     assert pipe.named_steps['clf'].successful
+<<<<<<< HEAD
     assert 'should_succeed' not in pipe.named_steps['transf'].fit_params
+=======
+    assert_false('should_succeed' in pipe.named_steps['transf'].fit_params)
+>>>>>>> upstream/0.20.X
 
 
 def test_predict_with_predict_params():

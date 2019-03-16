@@ -20,6 +20,10 @@ from ..utils.extmath import safe_sparse_dot
 from ..utils.multiclass import _check_partial_fit_first_call
 from ..utils.validation import check_is_fitted
 from ..exceptions import ConvergenceWarning
+<<<<<<< HEAD
+=======
+from ..externals import six
+>>>>>>> upstream/0.20.X
 from ..model_selection import StratifiedShuffleSplit, ShuffleSplit
 
 from .sgd_fast import plain_sgd, average_sgd
@@ -44,7 +48,11 @@ DEFAULT_EPSILON = 0.1
 # Default value of ``epsilon`` parameter.
 
 
+<<<<<<< HEAD
 class _ValidationScoreCallback:
+=======
+class _ValidationScoreCallback(object):
+>>>>>>> upstream/0.20.X
     """Callback for early stopping based on validation score"""
 
     def __init__(self, estimator, X_val, y_val, sample_weight_val,
@@ -64,7 +72,11 @@ class _ValidationScoreCallback:
         return est.score(self.X_val, self.y_val, self.sample_weight_val)
 
 
+<<<<<<< HEAD
 class BaseSGD(BaseEstimator, SparseCoefMixin, metaclass=ABCMeta):
+=======
+class BaseSGD(six.with_metaclass(ABCMeta, BaseEstimator, SparseCoefMixin)):
+>>>>>>> upstream/0.20.X
     """Base class for SGD classification and regression."""
 
     def __init__(self, loss, penalty='l2', alpha=0.0001, C=1.0,
@@ -1559,9 +1571,15 @@ class SGDRegressor(BaseSGDRegressor):
     >>> import numpy as np
     >>> from sklearn import linear_model
     >>> n_samples, n_features = 10, 5
+<<<<<<< HEAD
     >>> rng = np.random.RandomState(0)
     >>> y = rng.randn(n_samples)
     >>> X = rng.randn(n_samples, n_features)
+=======
+    >>> np.random.seed(0)
+    >>> y = np.random.randn(n_samples)
+    >>> X = np.random.randn(n_samples, n_features)
+>>>>>>> upstream/0.20.X
     >>> clf = linear_model.SGDRegressor(max_iter=1000, tol=1e-3)
     >>> clf.fit(X, y)
     ... #doctest: +NORMALIZE_WHITESPACE

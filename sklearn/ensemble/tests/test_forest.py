@@ -31,6 +31,10 @@ from sklearn.utils.testing import assert_almost_equal
 from sklearn.utils.testing import assert_array_almost_equal
 from sklearn.utils.testing import assert_array_equal
 from sklearn.utils.testing import assert_equal
+<<<<<<< HEAD
+=======
+from sklearn.utils.testing import assert_false
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import assert_less, assert_greater
 from sklearn.utils.testing import assert_greater_equal
 from sklearn.utils.testing import assert_raises
@@ -1207,7 +1211,11 @@ def check_warm_start_oob(name):
     clf_3 = ForestEstimator(n_estimators=15, max_depth=3, warm_start=True,
                             random_state=1, bootstrap=True, oob_score=False)
     clf_3.fit(X, y)
+<<<<<<< HEAD
     assert not hasattr(clf_3, 'oob_score_')
+=======
+    assert not(hasattr(clf_3, 'oob_score_'))
+>>>>>>> upstream/0.20.X
 
     clf_3.set_params(oob_score=True)
     ignore_warnings(clf_3.fit)(X, y)

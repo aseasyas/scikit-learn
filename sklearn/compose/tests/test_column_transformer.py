@@ -9,6 +9,10 @@ import pytest
 from sklearn.utils.testing import assert_raises
 from sklearn.utils.testing import assert_raise_message
 from sklearn.utils.testing import assert_equal
+<<<<<<< HEAD
+=======
+from sklearn.utils.testing import assert_false
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import assert_dict_equal
 from sklearn.utils.testing import assert_array_equal
 from sklearn.utils.testing import assert_allclose_dense_sparse
@@ -16,7 +20,7 @@ from sklearn.utils.testing import assert_almost_equal
 
 from sklearn.base import BaseEstimator
 from sklearn.compose import ColumnTransformer, make_column_transformer
-from sklearn.exceptions import NotFittedError
+from sklearn.exceptions import NotFittedError, DataConversionWarning
 from sklearn.preprocessing import StandardScaler, Normalizer, OneHotEncoder
 from sklearn.feature_extraction import DictVectorizer
 
@@ -336,8 +340,16 @@ def test_column_transformer_list():
         ('categorical', OneHotEncoder(), [2]),
     ])
 
+<<<<<<< HEAD
     assert_array_equal(ct.fit_transform(X_list), expected_result)
     assert_array_equal(ct.fit(X_list).transform(X_list), expected_result)
+=======
+    with pytest.warns(DataConversionWarning):
+        # TODO: this warning is not very useful in this case, would be good
+        # to get rid of it
+        assert_array_equal(ct.fit_transform(X_list), expected_result)
+        assert_array_equal(ct.fit(X_list).transform(X_list), expected_result)
+>>>>>>> upstream/0.20.X
 
 
 def test_column_transformer_sparse_stacking():
@@ -629,7 +641,11 @@ def test_column_transformer_named_estimators():
     assert isinstance(ct.named_transformers_.trans1, StandardScaler)
     assert isinstance(ct.named_transformers_['trans2'], StandardScaler)
     assert isinstance(ct.named_transformers_.trans2, StandardScaler)
+<<<<<<< HEAD
     assert not ct.named_transformers_.trans2.with_std
+=======
+    assert_false(ct.named_transformers_.trans2.with_std)
+>>>>>>> upstream/0.20.X
     # check it are fitted transformers
     assert_equal(ct.named_transformers_.trans1.mean_, 1.)
 
@@ -639,12 +655,20 @@ def test_column_transformer_cloning():
 
     ct = ColumnTransformer([('trans', StandardScaler(), [0])])
     ct.fit(X_array)
+<<<<<<< HEAD
     assert not hasattr(ct.transformers[0][1], 'mean_')
+=======
+    assert_false(hasattr(ct.transformers[0][1], 'mean_'))
+>>>>>>> upstream/0.20.X
     assert hasattr(ct.transformers_[0][1], 'mean_')
 
     ct = ColumnTransformer([('trans', StandardScaler(), [0])])
     ct.fit_transform(X_array)
+<<<<<<< HEAD
     assert not hasattr(ct.transformers[0][1], 'mean_')
+=======
+    assert_false(hasattr(ct.transformers[0][1], 'mean_'))
+>>>>>>> upstream/0.20.X
     assert hasattr(ct.transformers_[0][1], 'mean_')
 
 

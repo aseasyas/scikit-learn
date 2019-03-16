@@ -2,6 +2,7 @@ import numpy as np
 
 import pytest
 
+<<<<<<< HEAD
 from numpy.testing import assert_allclose
 from scipy import linalg
 
@@ -9,10 +10,17 @@ from sklearn.exceptions import ChangedBehaviorWarning
 from sklearn.utils import check_random_state
 from sklearn.utils.testing import (assert_array_equal, assert_no_warnings,
                                    assert_warns_message)
+=======
+from sklearn.utils.testing import assert_array_equal
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import assert_array_almost_equal
 from sklearn.utils.testing import assert_allclose
 from sklearn.utils.testing import assert_equal
 from sklearn.utils.testing import assert_almost_equal
+<<<<<<< HEAD
+=======
+from sklearn.utils.testing import assert_false
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import assert_raises
 from sklearn.utils.testing import assert_raise_message
 from sklearn.utils.testing import assert_warns

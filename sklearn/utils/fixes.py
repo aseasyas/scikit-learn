@@ -12,6 +12,8 @@ at which the fixe is no longer needed.
 
 from distutils.version import LooseVersion
 
+from distutils.version import LooseVersion
+
 import numpy as np
 import scipy.sparse as sp
 import scipy
@@ -197,6 +199,53 @@ def _astype_copy_false(X):
         return {}
 
 
+<<<<<<< HEAD
+def _joblib_parallel_args(**kwargs):
+    """Set joblib.Parallel arguments in a compatible way for 0.11 and 0.12+
+
+    For joblib 0.11 this maps both ``prefer`` and ``require`` parameters to
+    a specific ``backend``.
+
+    Parameters
+    ----------
+
+    prefer : str in {'processes', 'threads'} or None
+        Soft hint to choose the default backend if no specific backend
+        was selected with the parallel_backend context manager.
+=======
+# Fix for behavior inconsistency on numpy.equal for object dtypes.
+# For numpy versions < 1.13, numpy.equal tests element-wise identity of objects
+# instead of equality. This fix returns the mask of NaNs in an array of
+# numerical or object values for all numpy versions.
+if np_version < (1, 13):
+    def _object_dtype_isnan(X):
+        return np.frompyfunc(lambda x: x != x, 1, 1)(X).astype(bool)
+else:
+    def _object_dtype_isnan(X):
+        return X != X
+>>>>>>> upstream/0.20.X
+
+    require : 'sharedmem' or None
+        Hard condstraint to select the backend. If set to 'sharedmem',
+        the selected backend will be single-host and thread-based even
+        if the user asked for a non-thread based backend with
+        parallel_backend.
+
+<<<<<<< HEAD
+=======
+# To be removed once this fix is included in six
+try:
+    from collections.abc import Sequence as _Sequence  # noqa
+    from collections.abc import Iterable as _Iterable  # noqa
+    from collections.abc import Mapping as _Mapping  # noqa
+    from collections.abc import Sized as _Sized  # noqa
+except ImportError:  # python <3.3
+    from collections import Sequence as _Sequence  # noqa
+    from collections import Iterable as _Iterable  # noqa
+    from collections import Mapping as _Mapping  # noqa
+    from collections import Sized as _Sized  # noqa
+
+
 def _joblib_parallel_args(**kwargs):
     """Set joblib.Parallel arguments in a compatible way for 0.11 and 0.12+
 
@@ -216,6 +265,7 @@ def _joblib_parallel_args(**kwargs):
         if the user asked for a non-thread based backend with
         parallel_backend.
 
+>>>>>>> upstream/0.20.X
     See joblib.Parallel documentation for more details
     """
     from . import _joblib

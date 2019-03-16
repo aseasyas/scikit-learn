@@ -472,8 +472,13 @@ def test_auto_weight():
         clf.set_params(class_weight='balanced')
         y_pred_balanced = clf.fit(X[unbalanced], y[unbalanced],).predict(X)
         assert (metrics.f1_score(y, y_pred, average='macro')
+<<<<<<< HEAD
                 <= metrics.f1_score(y, y_pred_balanced,
                                     average='macro'))
+=======
+                    <= metrics.f1_score(y, y_pred_balanced,
+                                        average='macro'))
+>>>>>>> upstream/0.20.X
 
 
 def test_bad_input():

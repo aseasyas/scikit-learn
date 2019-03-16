@@ -262,6 +262,10 @@ class MinMaxScaler(BaseEstimator, TransformerMixin):
     Examples
     --------
     >>> from sklearn.preprocessing import MinMaxScaler
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/0.20.X
     >>> data = [[-1, 2], [-0.5, 6], [0, 10], [1, 18]]
     >>> scaler = MinMaxScaler()
     >>> print(scaler.fit(data))
@@ -424,6 +428,11 @@ def minmax_scale(X, feature_range=(0, 1), axis=0, copy=True):
         X_scaled = X_std * (max - min) + min
 
     where min, max = feature_range.
+ 
+    The transformation is calculated as (when ``axis=0``)::
+
+       X_scaled = scale * X + min - X.min(axis=0) * scale
+       where scale = (max - min) / (X.max(axis=0) - X.min(axis=0))
 
     The transformation is calculated as (when ``axis=0``)::
 
@@ -592,6 +601,10 @@ class StandardScaler(BaseEstimator, TransformerMixin):
     -----
     NaNs are treated as missing values: disregarded in fit, and maintained in
     transform.
+    
+    We use a biased estimator for the standard deviation, equivalent to
+    `numpy.std(x, ddof=0)`. Note that the choice of `ddof` is unlikely to
+    affect model performance.
 
     We use a biased estimator for the standard deviation, equivalent to
     `numpy.std(x, ddof=0)`. Note that the choice of `ddof` is unlikely to
@@ -2027,12 +2040,19 @@ class QuantileTransformer(BaseEstimator, TransformerMixin):
     to spread out the most frequent values. It also reduces the impact of
     (marginal) outliers: this is therefore a robust preprocessing scheme.
 
+<<<<<<< HEAD
     The transformation is applied on each feature independently. First an
     estimate of the cumulative distribution function of a feature is
     used to map the original values to a uniform distribution. The obtained
     values are then mapped to the desired output distribution using the
     associated quantile function. Features values of new/unseen data that fall
     below or above the fitted range will be mapped to the bounds of the output
+=======
+    The transformation is applied on each feature independently.
+    The cumulative distribution function of a feature is used to project the
+    original values. Features values of new/unseen data that fall below
+    or above the fitted range will be mapped to the bounds of the output
+>>>>>>> upstream/0.20.X
     distribution. Note that this transform is non-linear. It may distort linear
     correlations between variables measured at the same scale but renders
     variables measured at different scales more directly comparable.
@@ -2044,10 +2064,13 @@ class QuantileTransformer(BaseEstimator, TransformerMixin):
     n_quantiles : int, optional (default=1000 or n_samples)
         Number of quantiles to be computed. It corresponds to the number
         of landmarks used to discretize the cumulative distribution function.
+<<<<<<< HEAD
         If n_quantiles is larger than the number of samples, n_quantiles is set
         to the number of samples as a larger number of quantiles does not give
         a better approximation of the cumulative distribution function
         estimator.
+=======
+>>>>>>> upstream/0.20.X
 
     output_distribution : str, optional (default='uniform')
         Marginal distribution for the transformed data. The choices are
@@ -2439,12 +2462,19 @@ def quantile_transform(X, axis=0, n_quantiles=1000,
     to spread out the most frequent values. It also reduces the impact of
     (marginal) outliers: this is therefore a robust preprocessing scheme.
 
+<<<<<<< HEAD
     The transformation is applied on each feature independently. First an
     estimate of the cumulative distribution function of a feature is
     used to map the original values to a uniform distribution. The obtained
     values are then mapped to the desired output distribution using the
     associated quantile function. Features values of new/unseen data that fall
     below or above the fitted range will be mapped to the bounds of the output
+=======
+    The transformation is applied on each feature independently.
+    The cumulative distribution function of a feature is used to project the
+    original values. Features values of new/unseen data that fall below
+    or above the fitted range will be mapped to the bounds of the output
+>>>>>>> upstream/0.20.X
     distribution. Note that this transform is non-linear. It may distort linear
     correlations between variables measured at the same scale but renders
     variables measured at different scales more directly comparable.
@@ -2463,10 +2493,13 @@ def quantile_transform(X, axis=0, n_quantiles=1000,
     n_quantiles : int, optional (default=1000 or n_samples)
         Number of quantiles to be computed. It corresponds to the number
         of landmarks used to discretize the cumulative distribution function.
+<<<<<<< HEAD
         If n_quantiles is larger than the number of samples, n_quantiles is set
         to the number of samples as a larger number of quantiles does not give
         a better approximation of the cumulative distribution function
         estimator.
+=======
+>>>>>>> upstream/0.20.X
 
     output_distribution : str, optional (default='uniform')
         Marginal distribution for the transformed data. The choices are
@@ -2895,7 +2928,10 @@ class PowerTransformer(BaseEstimator, TransformerMixin):
     def _more_tags(self):
         return {'allow_nan': True}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/0.20.X
 def power_transform(X, method='warn', standardize=True, copy=True):
     """
     Power transforms are a family of parametric, monotonic transformations
@@ -2972,6 +3008,26 @@ def power_transform(X, method='warn', standardize=True, copy=True):
 
     References
     ----------
+<<<<<<< HEAD
+=======
+
+    .. [1] I.K. Yeo and R.A. Johnson, "A new family of power transformations to
+           improve normality or symmetry." Biometrika, 87(4), pp.954-959,
+           (2000).
+
+    .. [2] G.E.P. Box and D.R. Cox, "An Analysis of Transformations", Journal
+           of the Royal Statistical Society B, 26, 211-252 (1964).
+    """
+    if method == 'warn':
+        warnings.warn("The default value of 'method' will change from "
+                      "'box-cox' to 'yeo-johnson' in version 0.23. Set "
+                      "the 'method' argument explicitly to silence this "
+                      "warning in the meantime.",
+                      FutureWarning)
+        method = 'box-cox'
+    pt = PowerTransformer(method=method, standardize=standardize, copy=copy)
+    return pt.fit_transform(X)
+>>>>>>> upstream/0.20.X
 
     .. [1] I.K. Yeo and R.A. Johnson, "A new family of power transformations to
            improve normality or symmetry." Biometrika, 87(4), pp.954-959,

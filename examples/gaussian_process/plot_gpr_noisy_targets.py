@@ -63,8 +63,13 @@ y_pred, sigma = gp.predict(x, return_std=True)
 # the MSE
 plt.figure()
 plt.plot(x, f(x), 'r:', label=r'$f(x) = x\,\sin(x)$')
+<<<<<<< HEAD
 plt.plot(X, y, 'r.', markersize=10, label='Observations')
 plt.plot(x, y_pred, 'b-', label='Prediction')
+=======
+plt.plot(X, y, 'r.', markersize=10, label=u'Observations')
+plt.plot(x, y_pred, 'b-', label=u'Prediction')
+>>>>>>> upstream/0.20.X
 plt.fill(np.concatenate([x, x[::-1]]),
          np.concatenate([y_pred - 1.9600 * sigma,
                         (y_pred + 1.9600 * sigma)[::-1]]),
@@ -99,8 +104,13 @@ y_pred, sigma = gp.predict(x, return_std=True)
 # the MSE
 plt.figure()
 plt.plot(x, f(x), 'r:', label=r'$f(x) = x\,\sin(x)$')
+<<<<<<< HEAD
 plt.errorbar(X.ravel(), y, dy, fmt='r.', markersize=10, label='Observations')
 plt.plot(x, y_pred, 'b-', label='Prediction')
+=======
+plt.errorbar(X.ravel(), y, dy, fmt='r.', markersize=10, label=u'Observations')
+plt.plot(x, y_pred, 'b-', label=u'Prediction')
+>>>>>>> upstream/0.20.X
 plt.fill(np.concatenate([x, x[::-1]]),
          np.concatenate([y_pred - 1.9600 * sigma,
                         (y_pred + 1.9600 * sigma)[::-1]]),

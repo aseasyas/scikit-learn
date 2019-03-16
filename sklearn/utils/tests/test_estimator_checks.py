@@ -4,14 +4,23 @@ import sys
 import numpy as np
 import scipy.sparse as sp
 
+<<<<<<< HEAD
 from io import StringIO
+=======
+from sklearn.externals.six.moves import cStringIO as StringIO
+>>>>>>> upstream/0.20.X
 
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils import deprecated
 from sklearn.utils import _joblib
+<<<<<<< HEAD
 from sklearn.utils.testing import (assert_raises_regex,
                                    assert_equal, ignore_warnings,
                                    assert_warns, assert_raises)
+=======
+from sklearn.utils.testing import (assert_raises_regex, assert_equal,
+                                   ignore_warnings, assert_warns)
+>>>>>>> upstream/0.20.X
 from sklearn.utils.estimator_checks import check_estimator
 from sklearn.utils.estimator_checks \
     import check_class_weight_balanced_linear_classifier

@@ -739,7 +739,16 @@ def _incremental_mean_and_var(X, last_mean, last_variance, last_sample_count):
     # new = the current increment
     # updated = the aggregated stats
     last_sum = last_mean * last_sample_count
+<<<<<<< HEAD
     new_sum = _safe_accumulator_op(np.nansum, X, axis=0)
+=======
+    if np.issubdtype(X.dtype, np.floating) and X.dtype.itemsize < 8:
+        # Use at least float64 for the accumulator to avoid precision issues;
+        # see https://github.com/numpy/numpy/issues/9393
+        new_sum = np.nansum(X, axis=0, dtype=np.float64).astype(X.dtype)
+    else:
+        new_sum = np.nansum(X, axis=0)
+>>>>>>> upstream/0.20.X
 
     new_sample_count = np.sum(~np.isnan(X), axis=0)
     updated_sample_count = last_sample_count + new_sample_count

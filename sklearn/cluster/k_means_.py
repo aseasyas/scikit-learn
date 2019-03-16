@@ -31,6 +31,10 @@ from ..utils.validation import FLOAT_DTYPES
 from ..utils._joblib import Parallel
 from ..utils._joblib import delayed
 from ..utils._joblib import effective_n_jobs
+<<<<<<< HEAD
+=======
+from ..externals.six import string_types
+>>>>>>> upstream/0.20.X
 from ..exceptions import ConvergenceWarning
 from . import _k_means
 from ._k_means_elkan import k_means_elkan

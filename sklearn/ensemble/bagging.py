@@ -13,6 +13,11 @@ from warnings import warn
 from .base import BaseEnsemble, _partition_estimators
 from ..base import ClassifierMixin, RegressorMixin
 from ..utils._joblib import Parallel, delayed
+<<<<<<< HEAD
+=======
+from ..externals.six import with_metaclass
+from ..externals.six.moves import zip
+>>>>>>> upstream/0.20.X
 from ..metrics import r2_score, accuracy_score
 from ..tree import DecisionTreeClassifier, DecisionTreeRegressor
 from ..utils import check_random_state, check_X_y, check_array, column_or_1d

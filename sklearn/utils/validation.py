@@ -18,7 +18,12 @@ from inspect import signature
 
 from numpy.core.numeric import ComplexWarning
 
+<<<<<<< HEAD
 from .fixes import _object_dtype_isnan
+=======
+from ..externals import six
+from .fixes import signature
+>>>>>>> upstream/0.20.X
 from .. import get_config as _get_config
 from ..exceptions import NonBLASDotWarning
 from ..exceptions import NotFittedError
@@ -389,8 +394,11 @@ def check_array(array, accept_sparse=False, accept_large_sparse=True,
         - False: accept both np.inf and np.nan in array.
         - 'allow-nan': accept only np.nan values in array. Values cannot
           be infinite.
+<<<<<<< HEAD
 
         For object dtyped data, only np.nan is checked and not np.inf.
+=======
+>>>>>>> upstream/0.20.X
 
         .. versionadded:: 0.20
            ``force_all_finite`` accepts the string ``'allow-nan'``.

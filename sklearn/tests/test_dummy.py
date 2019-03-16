@@ -1,6 +1,8 @@
 
 import pytest
 
+import pytest
+
 import numpy as np
 import scipy.sparse as sp
 
@@ -675,7 +677,10 @@ def test_dummy_regressor_return_std():
     assert_array_equal(y_pred_list[1], y_std_expected)
 
 
+<<<<<<< HEAD
 @pytest.mark.filterwarnings('ignore: The default value of multioutput')  # 0.23
+=======
+>>>>>>> upstream/0.20.X
 @pytest.mark.parametrize("y,y_test", [
     ([1, 1, 1, 2], [1.25] * 4),
     (np.array([[2, 2],
@@ -710,6 +715,7 @@ def test_regressor_prediction_independent_of_X(strategy):
     predictions2 = reg2.predict(X2)
 
     assert_array_equal(predictions1, predictions2)
+<<<<<<< HEAD
 
 
 @pytest.mark.parametrize(
@@ -722,3 +728,5 @@ def test_dtype_of_classifier_probas(strategy):
     probas = model.fit(X, y).predict_proba(X)
 
     assert probas.dtype == np.float64
+=======
+>>>>>>> upstream/0.20.X

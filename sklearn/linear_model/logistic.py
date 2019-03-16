@@ -1595,9 +1595,15 @@ class LogisticRegression(BaseEstimator, LinearClassifierMixin,
             prefer = 'processes'
         fold_coefs_ = Parallel(n_jobs=self.n_jobs, verbose=self.verbose,
                                **_joblib_parallel_args(prefer=prefer))(
+<<<<<<< HEAD
             path_func(X, y, pos_class=class_, Cs=[C_],
                       l1_ratio=self.l1_ratio, fit_intercept=self.fit_intercept,
                       tol=self.tol, verbose=self.verbose, solver=solver,
+=======
+            path_func(X, y, pos_class=class_, Cs=[self.C],
+                      fit_intercept=self.fit_intercept, tol=self.tol,
+                      verbose=self.verbose, solver=solver,
+>>>>>>> upstream/0.20.X
                       multi_class=multi_class, max_iter=self.max_iter,
                       class_weight=self.class_weight, check_input=False,
                       random_state=self.random_state, coef=warm_start_coef_,

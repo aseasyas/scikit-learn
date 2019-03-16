@@ -11,7 +11,11 @@ from pytest import importorskip
 import numpy as np
 import scipy.sparse as sp
 
+<<<<<<< HEAD
 from sklearn.utils.testing import assert_equal
+=======
+from sklearn.utils.testing import assert_false, assert_equal
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import assert_raises
 from sklearn.utils.testing import assert_raises_regex
 from sklearn.utils.testing import assert_no_warnings
@@ -38,9 +42,15 @@ from sklearn.utils.validation import (
     check_consistent_length,
     assert_all_finite,
     check_memory,
+<<<<<<< HEAD
     check_non_negative,
     _num_samples,
     check_scalar)
+=======
+    LARGE_SPARSE_SUPPORTED,
+    _num_samples
+)
+>>>>>>> upstream/0.20.X
 import sklearn
 
 from sklearn.exceptions import NotFittedError
@@ -240,10 +250,17 @@ def test_check_array():
             assert_equal(X_checked.dtype, X.dtype)
         if order == 'C':
             assert X_checked.flags['C_CONTIGUOUS']
+<<<<<<< HEAD
             assert not X_checked.flags['F_CONTIGUOUS']
         elif order == 'F':
             assert X_checked.flags['F_CONTIGUOUS']
             assert not X_checked.flags['C_CONTIGUOUS']
+=======
+            assert_false(X_checked.flags['F_CONTIGUOUS'])
+        elif order == 'F':
+            assert X_checked.flags['F_CONTIGUOUS']
+            assert_false(X_checked.flags['C_CONTIGUOUS'])
+>>>>>>> upstream/0.20.X
         if copy:
             assert X is not X_checked
         else:
@@ -288,7 +305,11 @@ def test_check_array():
             assert X is not X_checked
         else:
             # doesn't copy if it was already good
+<<<<<<< HEAD
             if X.dtype == X_checked.dtype and X.format == X_checked.format:
+=======
+            if (X.dtype == X_checked.dtype and X.format == X_checked.format):
+>>>>>>> upstream/0.20.X
                 assert X is X_checked
 
     # other input formats
@@ -577,7 +598,11 @@ def test_check_array_complex_data_error():
 
 
 def test_has_fit_parameter():
+<<<<<<< HEAD
     assert not has_fit_parameter(KNeighborsClassifier, "sample_weight")
+=======
+    assert_false(has_fit_parameter(KNeighborsClassifier, "sample_weight"))
+>>>>>>> upstream/0.20.X
     assert has_fit_parameter(RandomForestRegressor, "sample_weight")
     assert has_fit_parameter(SVR, "sample_weight")
     assert has_fit_parameter(SVR(), "sample_weight")
@@ -775,6 +800,7 @@ def test_check_array_memmap(copy):
         assert X_checked.flags['WRITEABLE'] == copy
 
 
+<<<<<<< HEAD
 @pytest.mark.parametrize('retype', [
     np.asarray, sp.csr_matrix, sp.csc_matrix, sp.coo_matrix, sp.lil_matrix,
     sp.bsr_matrix, sp.dok_matrix, sp.dia_matrix
@@ -794,6 +820,8 @@ def test_check_non_negative(retype):
     assert_raises_regex(ValueError, "Negative ", check_non_negative, X, "")
 
 
+=======
+>>>>>>> upstream/0.20.X
 def test_check_X_y_informative_error():
     X = np.ones((2, 2))
     y = None
@@ -810,6 +838,7 @@ def test_retrieve_samples_from_non_standard_shape():
 
     X = TestNonNumericShape()
     assert _num_samples(X) == len(X)
+<<<<<<< HEAD
 
 
 @pytest.mark.parametrize('x, target_type, min_val, max_val',
@@ -841,3 +870,5 @@ def test_check_scalar_invalid(x, target_name, target_type, min_val, max_val,
                      min_val=min_val, max_val=max_val)
     assert str(raised_error.value) == str(err_msg)
     assert type(raised_error.value) == type(err_msg)
+=======
+>>>>>>> upstream/0.20.X

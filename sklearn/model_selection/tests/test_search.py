@@ -176,7 +176,11 @@ def test_parameter_grid():
 
 
 @pytest.mark.filterwarnings('ignore: The default of the `iid`')  # 0.22
+<<<<<<< HEAD
 @pytest.mark.filterwarnings('ignore: The default value of cv')  # 0.22
+=======
+@pytest.mark.filterwarnings('ignore: You should specify a value')  # 0.22
+>>>>>>> upstream/0.20.X
 def test_grid_search():
     # Test that the best estimator contains the right value for foo_param
     clf = MockClassifier()
@@ -845,10 +849,17 @@ def check_cv_results_array_types(search, param_keys, score_keys):
     assert all(isinstance(cv_results[param], np.ma.MaskedArray)
                for param in param_keys)
     assert all(cv_results[key].dtype == object for key in param_keys)
+<<<<<<< HEAD
     assert not any(isinstance(cv_results[key], np.ma.MaskedArray)
                    for key in score_keys)
     assert all(cv_results[key].dtype == np.float64
                for key in score_keys if not key.startswith('rank'))
+=======
+    assert_false(any(isinstance(cv_results[key], np.ma.MaskedArray)
+                     for key in score_keys))
+    assert_true(all(cv_results[key].dtype == np.float64
+                    for key in score_keys if not key.startswith('rank')))
+>>>>>>> upstream/0.20.X
 
     scorer_keys = search.scorer_.keys() if search.multimetric_ else ['score']
 
@@ -893,11 +904,19 @@ def test_grid_search_cv_results():
         cv_results = search.cv_results_
         # Check if score and timing are reasonable
         assert all(cv_results['rank_test_score'] >= 1)
+<<<<<<< HEAD
         assert (all(cv_results[k] >= 0) for k in score_keys
                 if k is not 'rank_test_score')
         assert (all(cv_results[k] <= 1) for k in score_keys
                 if 'time' not in k and
                 k is not 'rank_test_score')
+=======
+        assert_true(all(cv_results[k] >= 0) for k in score_keys
+                    if k is not 'rank_test_score')
+        assert_true(all(cv_results[k] <= 1) for k in score_keys
+                    if 'time' not in k and
+                    k is not 'rank_test_score')
+>>>>>>> upstream/0.20.X
         # Check cv_results structure
         check_cv_results_array_types(search, param_keys, score_keys)
         check_cv_results_keys(cv_results, param_keys, score_keys, n_candidates)
@@ -1690,7 +1709,11 @@ def test_custom_run_search():
 def test__custom_fit_no_run_search():
     class NoRunSearchSearchCV(BaseSearchCV):
         def __init__(self, estimator, **kwargs):
+<<<<<<< HEAD
             super().__init__(estimator, **kwargs)
+=======
+            super(NoRunSearchSearchCV, self).__init__(estimator, **kwargs)
+>>>>>>> upstream/0.20.X
 
         def fit(self, X, y=None, groups=None, **fit_params):
             return self
@@ -1700,7 +1723,11 @@ def test__custom_fit_no_run_search():
 
     class BadSearchCV(BaseSearchCV):
         def __init__(self, estimator, **kwargs):
+<<<<<<< HEAD
             super().__init__(estimator, **kwargs)
+=======
+            super(BadSearchCV, self).__init__(estimator, **kwargs)
+>>>>>>> upstream/0.20.X
 
     with pytest.raises(NotImplementedError,
                        match="_run_search not implemented."):

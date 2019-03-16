@@ -17,6 +17,10 @@ from scipy import sparse
 
 from .base import clone, TransformerMixin
 from .utils._joblib import Parallel, delayed
+<<<<<<< HEAD
+=======
+from .externals import six
+>>>>>>> upstream/0.20.X
 from .utils.metaestimators import if_delegate_has_method
 from .utils import Bunch
 from .utils.validation import check_memory

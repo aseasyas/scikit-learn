@@ -41,12 +41,19 @@ l1_ratio = 0.5  # L1 weight in the Elastic-Net regularization
 fig, axes = plt.subplots(3, 3)
 
 # Set regularization parameter
+<<<<<<< HEAD
 for i, (C, axes_row) in enumerate(zip((1, 0.1, 0.01), axes)):
     # turn down tolerance for short training time
     clf_l1_LR = LogisticRegression(C=C, penalty='l1', tol=0.01, solver='saga')
     clf_l2_LR = LogisticRegression(C=C, penalty='l2', tol=0.01, solver='saga')
     clf_en_LR = LogisticRegression(C=C, penalty='elasticnet', solver='saga',
                                    l1_ratio=l1_ratio, tol=0.01)
+=======
+for i, C in enumerate((1, 0.1, 0.01)):
+    # turn down tolerance for short training time
+    clf_l1_LR = LogisticRegression(C=C, penalty='l1', tol=0.01, solver='saga')
+    clf_l2_LR = LogisticRegression(C=C, penalty='l2', tol=0.01, solver='saga')
+>>>>>>> upstream/0.20.X
     clf_l1_LR.fit(X, y)
     clf_l2_LR.fit(X, y)
     clf_en_LR.fit(X, y)

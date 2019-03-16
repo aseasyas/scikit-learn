@@ -546,6 +546,7 @@ def calibration_curve(y_true, y_prob, normalize=False, n_bins=5,
         Number of bins. A bigger number requires more data. Bins with no data
         points (i.e. without corresponding values in y_prob) will not be
         returned, thus there may be fewer than n_bins in the return value.
+<<<<<<< HEAD
 
     strategy : {'uniform', 'quantile'}, (default='uniform')
         Strategy used to define the widths of the bins.
@@ -554,6 +555,8 @@ def calibration_curve(y_true, y_prob, normalize=False, n_bins=5,
             All bins have identical widths.
         quantile
             All bins have the same number of points.
+=======
+>>>>>>> upstream/0.20.X
 
     Returns
     -------

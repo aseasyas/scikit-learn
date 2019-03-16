@@ -7,6 +7,10 @@
 # modifications of the algorithm:
 # * Fast Optimization for t-SNE:
 #   https://cseweb.ucsd.edu/~lvdmaaten/workshops/nips2010/papers/vandermaaten.pdf
+<<<<<<< HEAD
+=======
+from __future__ import division
+>>>>>>> upstream/0.20.X
 
 import warnings
 from time import time

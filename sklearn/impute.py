@@ -1044,7 +1044,11 @@ class IterativeImputer(BaseEstimator, TransformerMixin):
 class MissingIndicator(BaseEstimator, TransformerMixin):
     """Binary indicators for missing values.
 
+<<<<<<< HEAD
     Note that this component typically should not be used in a vanilla
+=======
+    Note that this component typically should not not be used in a vanilla
+>>>>>>> upstream/0.20.X
     :class:`Pipeline` consisting of transformers and a classifier, but rather
     could be added using a :class:`FeatureUnion` or :class:`ColumnTransformer`.
 
@@ -1180,6 +1184,7 @@ class MissingIndicator(BaseEstimator, TransformerMixin):
                              "categorical data represented either as an array "
                              "with integer dtype or an array of string values "
                              "with an object dtype.".format(X.dtype))
+<<<<<<< HEAD
 
         if sparse.issparse(X) and self.missing_values == 0:
             # missing_values = 0 not allowed with sparse data as it would
@@ -1188,6 +1193,8 @@ class MissingIndicator(BaseEstimator, TransformerMixin):
                              "not supported. Provide a dense "
                              "array instead.")
 
+=======
+>>>>>>> upstream/0.20.X
         return X
 
     def fit(self, X, y=None):

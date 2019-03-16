@@ -1244,9 +1244,15 @@ class BaseGradientBoosting(BaseEnsemble, metaclass=ABCMeta):
                      check_input=False, X_idx_sorted=X_idx_sorted)
 
             # update tree leaves
+<<<<<<< HEAD
             loss.update_terminal_regions(
                 tree.tree_, X, y, residual, raw_predictions, sample_weight,
                 sample_mask, learning_rate=self.learning_rate, k=k)
+=======
+            loss.update_terminal_regions(tree.tree_, X, y, residual, y_pred,
+                                         sample_weight, sample_mask,
+                                         self.learning_rate, k=k)
+>>>>>>> upstream/0.20.X
 
             # add tree to ensemble
             self.estimators_[i, k] = tree

@@ -292,7 +292,11 @@ def test_one_hot_encoder_no_categorical_features():
     enc = OneHotEncoder(categorical_features=cat)
     with ignore_warnings(category=(DeprecationWarning, FutureWarning)):
         X_tr = enc.fit_transform(X)
+<<<<<<< HEAD
     expected_features = np.array([], dtype='object')
+=======
+    expected_features = np.array(list(), dtype='object')
+>>>>>>> upstream/0.20.X
     assert_array_equal(X, X_tr)
     assert_array_equal(enc.get_feature_names(), expected_features)
     assert enc.categories_ == []
@@ -615,6 +619,25 @@ def test_one_hot_encoder_raise_missing(X, as_data_frame, handle_unknown):
         X_partial = X[:1, :]
 
     ohe.fit(X_partial)
+
+    with pytest.raises(ValueError, match="Input contains NaN"):
+        ohe.transform(X)
+
+
+@pytest.mark.parametrize("X", [np.array([[1, np.nan]]).T,
+                               np.array([['a', np.nan]], dtype=object).T],
+                         ids=['numeric', 'object'])
+@pytest.mark.parametrize("handle_unknown", ['error', 'ignore'])
+def test_one_hot_encoder_raise_missing(X, handle_unknown):
+    ohe = OneHotEncoder(categories='auto', handle_unknown=handle_unknown)
+
+    with pytest.raises(ValueError, match="Input contains NaN"):
+        ohe.fit(X)
+
+    with pytest.raises(ValueError, match="Input contains NaN"):
+        ohe.fit_transform(X)
+
+    ohe.fit(X[:1, :])
 
     with pytest.raises(ValueError, match="Input contains NaN"):
         ohe.transform(X)

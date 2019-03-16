@@ -2,7 +2,11 @@
 
 .. currentmodule:: sklearn
 
+<<<<<<< HEAD
 .. _changes_0_20_3:
+=======
+ .. _changes_0_20_3:
+>>>>>>> upstream/0.20.X
 
 Version 0.20.3
 ==============
@@ -174,13 +178,20 @@ Code and Documentation Contributors
 
 With thanks to:
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/0.20.X
 adanhawth, Adrin Jalali, Albert Thomas, Andreas Mueller, Dan Stine, Feda Curic,
 Hanmin Qin, Jan S, jeremiedbb, Joel Nothman, Joris Van den Bossche,
 josephsalmon, Katrin Leinweber, Loic Esteve, Muhammad Hassaan Rafique, Nicolas
 Hug, Olivier Grisel, Paul Paczuski, Reshama Shaikh, Sam Waterbury, Shivam
 Kotwalia, Thomas Fan
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/0.20.X
 .. _changes_0_20_1:
 
 Version 0.20.1

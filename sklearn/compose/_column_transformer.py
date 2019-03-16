@@ -15,6 +15,10 @@ from scipy import sparse
 
 from ..base import clone, TransformerMixin
 from ..utils._joblib import Parallel, delayed
+<<<<<<< HEAD
+=======
+from ..externals import six
+>>>>>>> upstream/0.20.X
 from ..pipeline import _fit_transform_one, _transform_one, _name_estimators
 from ..preprocessing import FunctionTransformer
 from ..utils import Bunch
@@ -84,7 +88,11 @@ boolean mask array or callable
         estimator must support :term:`fit` and :term:`transform`.
 
     sparse_threshold : float, default = 0.3
+<<<<<<< HEAD
         If the output of the different transformers contains sparse matrices,
+=======
+        If the output of the different transfromers contains sparse matrices,
+>>>>>>> upstream/0.20.X
         these will be stacked as a sparse matrix if the overall density is
         lower than this value. Use ``sparse_threshold=0`` to always return
         dense.  When the transformed output consists of all dense data, the
@@ -633,7 +641,11 @@ def _get_column_indices(X, key):
         # Convert key into positive indexes
         idx = np.arange(n_columns)[key]
         return np.atleast_1d(idx).tolist()
+<<<<<<< HEAD
     elif _check_key_type(key, str):
+=======
+    elif _check_key_type(key, six.string_types):
+>>>>>>> upstream/0.20.X
         try:
             all_columns = list(X.columns)
         except AttributeError:
@@ -685,7 +697,11 @@ def _validate_transformers(transformers):
         return True
 
     for t in transformers:
+<<<<<<< HEAD
         if isinstance(t, str) and t in ('drop', 'passthrough'):
+=======
+        if isinstance(t, six.string_types) and t in ('drop', 'passthrough'):
+>>>>>>> upstream/0.20.X
             continue
         if (not (hasattr(t, "fit") or hasattr(t, "fit_transform")) or not
                 hasattr(t, "transform")):
@@ -760,6 +776,14 @@ def make_column_transformer(*transformers, **kwargs):
         By setting ``remainder`` to be an estimator, the remaining
         non-specified columns will use the ``remainder`` estimator. The
         estimator must support :term:`fit` and :term:`transform`.
+
+    sparse_threshold : float, default = 0.3
+        If the transformed output consists of a mix of sparse and dense data,
+        it will be stacked as a sparse matrix if the density is lower than this
+        value. Use ``sparse_threshold=0`` to always return dense.
+        When the transformed output consists of all sparse or all dense data,
+        the stacked result will be sparse or dense, respectively, and this
+        keyword will be ignored.
 
     sparse_threshold : float, default = 0.3
         If the transformed output consists of a mix of sparse and dense data,

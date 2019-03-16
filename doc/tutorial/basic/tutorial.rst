@@ -340,8 +340,13 @@ once will overwrite what was learned by any previous ``fit()``::
     decision_function_shape='ovr', degree=3, gamma='scale', kernel='rbf',
     max_iter=-1, probability=False, random_state=None, shrinking=True,
     tol=0.001, verbose=False)
+<<<<<<< HEAD
   >>> clf.predict(X[:5])
   array([0, 0, 0, 0, 0])
+=======
+  >>> clf.predict(X_test)
+  array([0, 0, 0, 1, 0])
+>>>>>>> upstream/0.20.X
 
 Here, the default kernel ``rbf`` is first changed to ``linear`` via
 :func:`SVC.set_params()<sklearn.svm.SVC.set_params>` after the estimator has

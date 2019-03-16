@@ -317,9 +317,12 @@ class DummyClassifier(BaseEstimator, ClassifierMixin, MultiOutputMixin):
         else:
             return [np.log(p) for p in proba]
 
+<<<<<<< HEAD
     def _more_tags(self):
         return {'poor_score': True, 'no_validation': True}
 
+=======
+>>>>>>> upstream/0.20.X
     def score(self, X, y, sample_weight=None):
         """Returns the mean accuracy on the given test data and labels.
 
@@ -345,6 +348,15 @@ class DummyClassifier(BaseEstimator, ClassifierMixin, MultiOutputMixin):
         -------
         score : float
             Mean accuracy of self.predict(X) wrt. y.
+<<<<<<< HEAD
+=======
+
+        """
+        if X is None:
+            X = np.zeros(shape=(len(y), 1))
+        return super(DummyClassifier, self).score(X, y, sample_weight)
+
+>>>>>>> upstream/0.20.X
 
         """
         if X is None:
@@ -509,9 +521,12 @@ class DummyRegressor(BaseEstimator, RegressorMixin, MultiOutputMixin):
 
         return (y, y_std) if return_std else y
 
+<<<<<<< HEAD
     def _more_tags(self):
         return {'poor_score': True, 'no_validation': True}
 
+=======
+>>>>>>> upstream/0.20.X
     def score(self, X, y, sample_weight=None):
         """Returns the coefficient of determination R^2 of the prediction.
 
@@ -548,4 +563,8 @@ class DummyRegressor(BaseEstimator, RegressorMixin, MultiOutputMixin):
         """
         if X is None:
             X = np.zeros(shape=(len(y), 1))
+<<<<<<< HEAD
         return super().score(X, y, sample_weight)
+=======
+        return super(DummyRegressor, self).score(X, y, sample_weight)
+>>>>>>> upstream/0.20.X

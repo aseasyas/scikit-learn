@@ -55,6 +55,10 @@ from .utils.metaestimators import _safe_split, if_delegate_has_method
 
 from .utils._joblib import Parallel
 from .utils._joblib import delayed
+<<<<<<< HEAD
+=======
+from .externals.six.moves import zip as izip
+>>>>>>> upstream/0.20.X
 
 __all__ = [
     "OneVsRestClassifier",

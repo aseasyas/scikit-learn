@@ -48,8 +48,14 @@ import numpy as np
 from scipy.sparse import issparse
 from scipy.sparse import hstack as sparse_hstack
 
+<<<<<<< HEAD
 from ..base import ClassifierMixin, RegressorMixin, MultiOutputMixin
 from ..utils._joblib import Parallel, delayed
+=======
+from ..base import ClassifierMixin, RegressorMixin
+from ..utils._joblib import Parallel, delayed
+from ..externals import six
+>>>>>>> upstream/0.20.X
 from ..metrics import r2_score
 from ..preprocessing import OneHotEncoder
 from ..tree import (DecisionTreeClassifier, DecisionTreeRegressor,
@@ -242,7 +248,11 @@ class BaseForest(BaseEnsemble, MultiOutputMixin, metaclass=ABCMeta):
 
         if self.n_estimators == 'warn':
             warn("The default value of n_estimators will change from "
+<<<<<<< HEAD
                  "10 in version 0.20 to 100 in 0.22.", FutureWarning)
+=======
+                          "10 in version 0.20 to 100 in 0.22.", FutureWarning)
+>>>>>>> upstream/0.20.X
             self.n_estimators = 10
 
         # Validate or convert input data

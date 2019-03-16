@@ -163,7 +163,11 @@ class SkewedChi2Sampler(BaseEstimator, TransformerMixin):
     ...                                  random_state=0)
     >>> X_features = chi2_feature.fit_transform(X, y)
     >>> clf = SGDClassifier(max_iter=10, tol=1e-3)
+<<<<<<< HEAD
     >>> clf.fit(X_features, y)  # doctest: +NORMALIZE_WHITESPACE
+=======
+    >>> clf.fit(X_features, y)
+>>>>>>> upstream/0.20.X
     SGDClassifier(alpha=0.0001, average=False, class_weight=None,
            early_stopping=False, epsilon=0.1, eta0=0.0, fit_intercept=True,
            l1_ratio=0.15, learning_rate='optimal', loss='hinge', max_iter=10,
@@ -283,7 +287,11 @@ class AdditiveChi2Sampler(BaseEstimator, TransformerMixin):
     >>> chi2sampler = AdditiveChi2Sampler(sample_steps=2)
     >>> X_transformed = chi2sampler.fit_transform(X, y)
     >>> clf = SGDClassifier(max_iter=5, random_state=0, tol=1e-3)
+<<<<<<< HEAD
     >>> clf.fit(X_transformed, y)  # doctest: +NORMALIZE_WHITESPACE
+=======
+    >>> clf.fit(X_transformed, y)
+>>>>>>> upstream/0.20.X
     SGDClassifier(alpha=0.0001, average=False, class_weight=None,
            early_stopping=False, epsilon=0.1, eta0=0.0, fit_intercept=True,
            l1_ratio=0.15, learning_rate='optimal', loss='hinge', max_iter=5,

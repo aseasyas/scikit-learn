@@ -329,7 +329,8 @@ rules before submitting a pull request:
   accepted. Bug-fixes or new features should be provided with
   `non-regression tests
   <https://en.wikipedia.org/wiki/Non-regression_testing>`_. These tests
-  verify the correct behavior of the fix or feature. In this manner, further
+  verify the correct behavior of the fix or feature. These tests verify the
+  correct behavior of the fix or feature. In this manner, further
   modifications on the code base are granted to be consistent with the
   desired behavior. For the case of bug fixes, at the time of the PR, the
   non-regression tests should fail for the code base in the master branch
@@ -403,6 +404,7 @@ message, the following actions are taken.
     [doc quick]            Docs built, but excludes example gallery plots
     [doc build]            Docs built including example gallery plots
     ====================== ===================
+<<<<<<< HEAD
 
 Stalled pull requests
 ^^^^^^^^^^^^^^^^^^^^^
@@ -413,6 +415,18 @@ them over is a great service for the project.
 
 A good etiquette to take over is:
 
+=======
+
+Stalled pull requests
+^^^^^^^^^^^^^^^^^^^^^
+
+As contributing a feature can be a lengthy process, some
+pull requests appear inactive but unfinished. In such a case, taking
+them over is a great service for the project.
+
+A good etiquette to take over is:
+
+>>>>>>> upstream/0.20.X
 * **Determine if a PR is stalled**
 
   * A pull request may have the label "stalled" or "help wanted" if we
@@ -956,7 +970,23 @@ in the examples.
 Python versions supported
 -------------------------
 
+<<<<<<< HEAD
 Since scikit-learn 0.21, only Python 3.5 and newer is supported.
+=======
+All scikit-learn code should work unchanged in both Python 2.7 and 3.4 or
+newer. Since Python 3.x is not backwards compatible, that may require changes
+to code and it certainly requires testing on both 2.7 and 3.4 or newer.
+
+For most numerical algorithms, Python 3.x support is easy:
+just remember that ``print`` is a function and
+integer division is written ``//``.
+String handling has been overhauled, though, as have parts of
+the Python standard library.
+The `six <https://pythonhosted.org/six/>`_ package helps with
+cross-compatibility and is included in scikit-learn as
+``sklearn.externals.six``.
+
+>>>>>>> upstream/0.20.X
 
 .. _code_review:
 
@@ -1449,6 +1479,7 @@ patterns.
 The :mod:`sklearn.utils.multiclass` module contains useful functions
 for working with multiclass and multilabel problems.
 
+<<<<<<< HEAD
 Estimator Tags
 --------------
 .. warning::
@@ -1524,6 +1555,8 @@ instantiated with an instance of ``LinearDiscriminantAnalysis`` (or
 of these two models is somewhat idiosyncratic but both should provide robust
 closed-form solutions.
 
+=======
+>>>>>>> upstream/0.20.X
 .. _reading-code:
 
 Reading the existing code base

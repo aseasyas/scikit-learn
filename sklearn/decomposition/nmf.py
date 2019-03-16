@@ -887,10 +887,13 @@ def non_negative_factorization(X, W=None, H=None, n_components=None,
     init : None | 'random' | 'nndsvd' | 'nndsvda' | 'nndsvdar' | 'custom'
         Method used to initialize the procedure.
         Default: 'random'.
+<<<<<<< HEAD
 
         The default value will change from 'random' to None in version 0.23
         to make it consistent with decomposition.NMF.
 
+=======
+>>>>>>> upstream/0.20.X
         Valid options:
 
         - None: 'nndsvd' if n_components < n_features, otherwise 'random'.

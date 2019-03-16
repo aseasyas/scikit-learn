@@ -177,8 +177,13 @@ render these plots inline automatically::
     .. figure:: ../images/iris.pdf
        :align: center
 
+<<<<<<< HEAD
 .. figure:: ../auto_examples/tree/images/sphx_glr_plot_iris_dtc_001.png
    :target: ../auto_examples/tree/plot_iris_dtc.html
+=======
+.. figure:: ../auto_examples/tree/images/sphx_glr_plot_iris_001.png
+   :target: ../auto_examples/tree/plot_iris.html
+>>>>>>> upstream/0.20.X
    :align: center
    :scale: 75
 

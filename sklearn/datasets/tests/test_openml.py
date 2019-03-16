@@ -18,7 +18,12 @@ from sklearn.datasets.openml import (_open_openml_url,
 from sklearn.utils.testing import (assert_warns_message,
                                    assert_raise_message)
 from sklearn.utils import is_scalar_nan
+<<<<<<< HEAD
 from urllib.error import HTTPError
+=======
+from sklearn.externals.six import string_types
+from sklearn.externals.six.moves.urllib.error import HTTPError
+>>>>>>> upstream/0.20.X
 from sklearn.datasets.tests.test_common import check_return_X_y
 from functools import partial
 
@@ -153,7 +158,11 @@ def _monkey_patch_webbased_functions(context,
     path_suffix = '.gz'
     read_fn = gzip.open
 
+<<<<<<< HEAD
     class MockHTTPResponse:
+=======
+    class MockHTTPResponse(object):
+>>>>>>> upstream/0.20.X
         def __init__(self, data, is_gzip):
             self.data = data
             self.is_gzip = is_gzip

@@ -29,8 +29,14 @@ from ..preprocessing import normalize
 from .hashing import FeatureHasher
 from .stop_words import ENGLISH_STOP_WORDS
 from ..utils.validation import check_is_fitted, check_array, FLOAT_DTYPES
+<<<<<<< HEAD
 from ..utils import _IS_32BIT
 from ..utils.fixes import _astype_copy_false
+=======
+from ..utils.fixes import sp_version
+from ..utils.fixes import _Mapping as Mapping  # noqa
+from ..utils import _IS_32BIT
+>>>>>>> upstream/0.20.X
 
 
 __all__ = ['HashingVectorizer',
@@ -873,7 +879,11 @@ class CountVectorizer(BaseEstimator, VectorizerMixin):
 
         Returns a reordered matrix and modifies the vocabulary in place
         """
+<<<<<<< HEAD
         sorted_features = sorted(vocabulary.items())
+=======
+        sorted_features = sorted(six.iteritems(vocabulary))
+>>>>>>> upstream/0.20.X
         map_index = np.empty(len(sorted_features), dtype=X.indices.dtype)
         for new_val, (term, old_val) in enumerate(sorted_features):
             vocabulary[term] = new_val

@@ -275,8 +275,12 @@ def test_cross_val_score():
                   error_score='raise')
 
 
+<<<<<<< HEAD
 @pytest.mark.filterwarnings('ignore:The default value of n_split')  # 0.22
 @pytest.mark.filterwarnings('ignore:The default value of cv')  # 0.22
+=======
+@pytest.mark.filterwarnings('ignore:You should specify a value for')  # 0.22
+>>>>>>> upstream/0.20.X
 def test_cross_validate_many_jobs():
     # regression test for #12154: cv='warn' with n_jobs>1 trigger a copy of
     # the parameters leading to a failure in check_cv due to cv is 'warn'
@@ -287,7 +291,11 @@ def test_cross_validate_many_jobs():
     cross_validate(grid, X, y, n_jobs=2)
 
 
+<<<<<<< HEAD
 @pytest.mark.filterwarnings('ignore: The default value of cv')  # 0.22
+=======
+@pytest.mark.filterwarnings('ignore: You should specify a value')  # 0.22
+>>>>>>> upstream/0.20.X
 def test_cross_validate_invalid_scoring_param():
     X, y = make_classification(random_state=0)
     estimator = MockClassifier()
@@ -1291,7 +1299,11 @@ def test_check_is_permutation():
     p = np.arange(100)
     rng.shuffle(p)
     assert _check_is_permutation(p, 100)
+<<<<<<< HEAD
     assert not _check_is_permutation(np.delete(p, 23), 100)
+=======
+    assert_false(_check_is_permutation(np.delete(p, 23), 100))
+>>>>>>> upstream/0.20.X
 
     p[0] = 23
     assert not _check_is_permutation(p, 100)

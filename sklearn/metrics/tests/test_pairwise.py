@@ -19,6 +19,10 @@ from sklearn.utils.testing import assert_equal
 from sklearn.utils.testing import assert_array_equal
 from sklearn.utils.testing import assert_raises
 from sklearn.utils.testing import assert_raises_regexp
+<<<<<<< HEAD
+=======
+from sklearn.utils.testing import assert_warns
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import ignore_warnings
 from sklearn.utils.testing import assert_warns_message
 
@@ -169,6 +173,7 @@ def test_pairwise_precomputed(func):
     # Test converts list to array-like
     S = func([[1.]], metric='precomputed')
     assert isinstance(S, np.ndarray)
+<<<<<<< HEAD
 
 
 def test_pairwise_precomputed_non_negative():
@@ -176,6 +181,8 @@ def test_pairwise_precomputed_non_negative():
     assert_raises_regexp(ValueError, '.* non-negative values.*',
                          pairwise_distances, np.full((5, 5), -1),
                          metric='precomputed')
+=======
+>>>>>>> upstream/0.20.X
 
 
 def check_pairwise_parallel(func, metric, kwds):
@@ -905,7 +912,11 @@ def test_pairwise_distances_data_derived_params(n_jobs, metric, dist_function,
                                                 y_is_x):
     # check that pairwise_distances give the same result in sequential and
     # parallel, when metric has data-derived parameters.
+<<<<<<< HEAD
     with config_context(working_memory=1):  # to have more than 1 chunk
+=======
+    with config_context(working_memory=0.1):  # to have more than 1 chunk
+>>>>>>> upstream/0.20.X
         rng = np.random.RandomState(0)
         X = rng.random_sample((1000, 10))
 

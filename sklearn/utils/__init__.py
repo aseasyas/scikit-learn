@@ -14,12 +14,20 @@ from .murmurhash import murmurhash3_32
 from .class_weight import compute_class_weight, compute_sample_weight
 from . import _joblib
 from ..exceptions import DataConversionWarning
+<<<<<<< HEAD
+=======
+from .fixes import _Sequence as Sequence
+>>>>>>> upstream/0.20.X
 from .deprecation import deprecated
 from .validation import (as_float_array,
                          assert_all_finite,
                          check_random_state, column_or_1d, check_array,
                          check_consistent_length, check_X_y, indexable,
+<<<<<<< HEAD
                          check_symmetric, check_scalar)
+=======
+                         check_symmetric)
+>>>>>>> upstream/0.20.X
 from .. import get_config
 
 

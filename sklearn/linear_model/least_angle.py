@@ -22,6 +22,11 @@ from ..utils import arrayfuncs, as_float_array, check_X_y
 from ..model_selection import check_cv
 from ..exceptions import ConvergenceWarning
 from ..utils._joblib import Parallel, delayed
+<<<<<<< HEAD
+=======
+from ..externals.six.moves import xrange
+from ..externals.six import string_types
+>>>>>>> upstream/0.20.X
 
 SOLVE_TRIANGULAR_ARGS = {'check_finite': False}
 

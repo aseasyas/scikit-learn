@@ -9,7 +9,12 @@ from numpy.testing import assert_array_equal
 
 import pytest
 
+<<<<<<< HEAD
 from sklearn.utils.testing import (assert_equal, assert_in)
+=======
+from sklearn.utils.testing import (assert_equal, assert_in,
+                                   assert_false)
+>>>>>>> upstream/0.20.X
 
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.feature_selection import SelectKBest, chi2
@@ -75,7 +80,11 @@ def test_one_of_k():
 
     names = v.get_feature_names()
     assert "version=2" in names
+<<<<<<< HEAD
     assert "version" not in names
+=======
+    assert_false("version" in names)
+>>>>>>> upstream/0.20.X
 
 
 def test_unseen_or_no_features():

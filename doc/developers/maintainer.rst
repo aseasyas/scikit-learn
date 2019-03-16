@@ -10,6 +10,7 @@ Before a release
 
    and commit.
 
+<<<<<<< HEAD
 2. Confirm any blockers tagged for the milestone are resolved, and that other
    issues tagged for the milestone can be postponed.
 
@@ -36,6 +37,11 @@ the bug fix (version 0.999.3), you can use::
 
     $ git checkout -b release-0.999.3 master
     $ git rebase -i 0.999.X
+=======
+Making a release
+----------------
+For more information see https://github.com/scikit-learn/scikit-learn/wiki/How-to-make-a-release
+>>>>>>> upstream/0.20.X
 
 Then pick the commits for release and resolve any issues, and create a pull
 request with 0.999.X as base. Add a commit updating ``sklearn.__version__``.
@@ -71,13 +77,18 @@ Making a release
 
     $ git push git@github.com:scikit-learn/scikit-learn.git --tags
 
+<<<<<<< HEAD
 4. Create the source tarball:
+=======
+4. create the source tarball:
+>>>>>>> upstream/0.20.X
 
    - Wipe clean your repo::
 
        $ git clean -xfd
 
    - Generate the tarball::
+<<<<<<< HEAD
 
        $ python setup.py sdist
 
@@ -87,6 +98,17 @@ Making a release
 
 5. Update the dependency versions and set ``BUILD_COMMIT`` variable to the
    release tag at:
+=======
+
+       $ python setup.py sdist
+
+   The result should be in the `dist/` folder. We will upload it later
+   with the wheels. Check that you can install it in a new virtualenv and
+   that the tests pass.
+
+5. Build binaries using dedicated CI servers by updating the git submodule
+   reference to the new scikit-learn tag of the release at:
+>>>>>>> upstream/0.20.X
 
    https://github.com/MacPython/scikit-learn-wheels
 
@@ -97,11 +119,16 @@ Making a release
        $ pip install -U wheelhouse_uploader twine
        $ python setup.py fetch_artifacts
 
+<<<<<<< HEAD
 6. Check the content of the `dist/` folder: it should contain all the wheels
+=======
+   Check the content of the `dist/` folder: it should contain all the wheels
+>>>>>>> upstream/0.20.X
    along with the source tarball ("scikit-learn-XXX.tar.gz").
 
    Make sure that you do not have developer versions or older versions of
    the scikit-learn package in that folder.
+<<<<<<< HEAD
 
    Upload everything at once to https://pypi.org::
 
@@ -119,6 +146,15 @@ Making a release
        $ git push origin master
 
 The following GitHub checklist might be helpful in a release PR::
+=======
+
+   Upload everything at once to https://pypi.org::
+
+       $ twine upload dist/
+
+6. Push the documentation to the website. Circle CI should do this
+   automatically for master and <N>.<N>.X branches.
+>>>>>>> upstream/0.20.X
 
     * [ ] update news and what's new date in master and release branch
     * [ ] create tag

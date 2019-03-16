@@ -547,8 +547,11 @@ class BaseSVC(BaseLibSVM, ClassifierMixin, metaclass=ABCMeta):
         the weight vector (``coef_``). See also `this question
         <https://stats.stackexchange.com/questions/14876/
         interpreting-distance-from-hyperplane-in-svm>`_ for further details.
+<<<<<<< HEAD
         If decision_function_shape='ovr', the decision function is a monotonic
         transformation of ovo decision function.
+=======
+>>>>>>> upstream/0.20.X
         """
         dec = self._decision_function(X)
         if self.decision_function_shape == 'ovr' and len(self.classes_) > 2:

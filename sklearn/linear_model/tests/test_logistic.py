@@ -27,8 +27,11 @@ from sklearn.utils.testing import assert_warns
 from sklearn.utils.testing import ignore_warnings
 from sklearn.utils.testing import assert_warns_message
 from sklearn.utils.testing import assert_no_warnings
+<<<<<<< HEAD
 from sklearn.linear_model import SGDClassifier
 from sklearn.preprocessing import scale
+=======
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import skip_if_no_parallel
 
 from sklearn.exceptions import ConvergenceWarning
@@ -1170,7 +1173,11 @@ def test_logreg_l1_sparse_data():
 
 
 @pytest.mark.filterwarnings('ignore: Default multi_class will')  # 0.22
+<<<<<<< HEAD
 @pytest.mark.filterwarnings('ignore: The default value of cv')  # 0.22
+=======
+@pytest.mark.filterwarnings('ignore: You should specify a value')  # 0.22
+>>>>>>> upstream/0.20.X
 @pytest.mark.parametrize("random_seed", [42])
 @pytest.mark.parametrize("penalty", ["l1", "l2"])
 def test_logistic_regression_cv_refit(random_seed, penalty):

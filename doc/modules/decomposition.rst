@@ -879,6 +879,7 @@ the only data that we observe. The latent variables determine the random mixture
 of topics in the corpus and the distribution of words in the documents. 
 The goal of LDA is to use the observed words to infer the hidden topic 
 structure. 
+<<<<<<< HEAD
 
 When modeling text corpora, the model assumes the following generative process 
 for a corpus with :math:`D` documents and :math:`K` topics, with :math:`K` 
@@ -889,6 +890,18 @@ corresponding to :attr:`n_components` in the API:
      i.e. the probability of a word appearing in topic :math:`k`. 
      :math:`\eta` corresponds to :attr:`topic_word_prior`. 
 
+=======
+
+When modeling text corpora, the model assumes the following generative process 
+for a corpus with :math:`D` documents and :math:`K` topics, with :math:`K` 
+corresponding to :attr:`n_components` in the API:
+
+  1. For each topic :math:`k \in K`, draw :math:`\beta_k \sim 
+     \mathrm{Dirichlet}(\eta)`. This provides a distribution over the words, 
+     i.e. the probability of a word appearing in topic :math:`k`. 
+     :math:`\eta` corresponds to :attr:`topic_word_prior`. 
+
+>>>>>>> upstream/0.20.X
   2. For each document :math:`d \in D`, draw the topic proportions 
      :math:`\theta_d \sim \mathrm{Dirichlet}(\alpha)`. :math:`\alpha` 
      corresponds to :attr:`doc_topic_prior`. 

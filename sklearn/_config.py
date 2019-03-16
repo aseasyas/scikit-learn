@@ -45,6 +45,7 @@ def set_config(assume_finite=None, working_memory=None,
 
         .. versionadded:: 0.20
 
+<<<<<<< HEAD
     print_changed_only : bool, optional
         If True, only the parameters that were set to non-default
         values will be printed when printing an estimator. For example,
@@ -53,6 +54,8 @@ def set_config(assume_finite=None, working_memory=None,
         all the non-changed parameters.
 
         .. versionadded:: 0.21
+=======
+>>>>>>> upstream/0.20.X
     """
     if assume_finite is not None:
         _global_config['assume_finite'] = assume_finite

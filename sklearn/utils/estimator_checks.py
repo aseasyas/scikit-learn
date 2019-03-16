@@ -11,8 +11,15 @@ import numpy as np
 from scipy import sparse
 from scipy.stats import rankdata
 
+<<<<<<< HEAD
 from sklearn.utils import IS_PYPY
 from sklearn.utils import _joblib
+=======
+from sklearn.externals.six.moves import zip
+from sklearn.utils import IS_PYPY, _IS_32BIT
+from sklearn.utils import _joblib
+from sklearn.utils._joblib import Memory
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import assert_raises, _get_args
 from sklearn.utils.testing import assert_raises_regex
 from sklearn.utils.testing import assert_raise_message
@@ -61,6 +68,7 @@ from sklearn.datasets import load_iris, load_boston, make_blobs
 
 BOSTON = None
 CROSS_DECOMPOSITION = ['PLSCanonical', 'PLSRegression', 'CCA', 'PLSSVD']
+<<<<<<< HEAD
 
 
 def _safe_tags(estimator, key=None):
@@ -79,6 +87,24 @@ def _safe_tags(estimator, key=None):
 
 def _yield_checks(name, estimator):
     tags = _safe_tags(estimator)
+=======
+MULTI_OUTPUT = ['CCA', 'DecisionTreeRegressor', 'ElasticNet',
+                'ExtraTreeRegressor', 'ExtraTreesRegressor',
+                'GaussianProcessRegressor', 'TransformedTargetRegressor',
+                'KNeighborsRegressor', 'KernelRidge', 'Lars', 'Lasso',
+                'LassoLars', 'LinearRegression', 'MultiTaskElasticNet',
+                'MultiTaskElasticNetCV', 'MultiTaskLasso', 'MultiTaskLassoCV',
+                'OrthogonalMatchingPursuit', 'PLSCanonical', 'PLSRegression',
+                'RANSACRegressor', 'RadiusNeighborsRegressor',
+                'RandomForestRegressor', 'Ridge', 'RidgeCV']
+ALLOW_NAN = ['Imputer', 'SimpleImputer', 'MissingIndicator',
+             'MaxAbsScaler', 'MinMaxScaler', 'RobustScaler', 'StandardScaler',
+             'PowerTransformer', 'QuantileTransformer']
+SUPPORT_STRING = ['SimpleImputer', 'MissingIndicator']
+
+
+def _yield_non_meta_checks(name, estimator):
+>>>>>>> upstream/0.20.X
     yield check_estimators_dtypes
     yield check_fit_score_takes_y
     yield check_sample_weights_pandas_series
@@ -645,10 +671,16 @@ def check_dtype_object(name, estimator_orig):
         if "Unknown label type" not in str(e):
             raise
 
+<<<<<<< HEAD
     tags = _safe_tags(estimator)
     if 'str' not in tags['X_types']:
         X[0, 0] = {'foo': 'bar'}
         msg = "argument must be a string.* number"
+=======
+    if name not in SUPPORT_STRING:
+        X[0, 0] = {'foo': 'bar'}
+        msg = "argument must be a string or a number"
+>>>>>>> upstream/0.20.X
         assert_raises_regex(TypeError, msg, estimator.fit, X, y)
     else:
         # Estimators supporting string will not call np.asarray to convert the

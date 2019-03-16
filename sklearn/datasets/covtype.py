@@ -26,6 +26,10 @@ from .base import _fetch_remote
 from .base import RemoteFileMetadata
 from ..utils import Bunch
 from .base import _pkl_filepath
+<<<<<<< HEAD
+=======
+from ..utils.fixes import makedirs
+>>>>>>> upstream/0.20.X
 from ..utils import _joblib
 from ..utils import check_random_state
 

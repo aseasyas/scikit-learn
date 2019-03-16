@@ -21,6 +21,10 @@ from .base import get_data_home
 from .base import _pkl_filepath
 from .base import _fetch_remote
 from .base import RemoteFileMetadata
+<<<<<<< HEAD
+=======
+from ..utils.fixes import makedirs
+>>>>>>> upstream/0.20.X
 from ..utils import _joblib
 from .svmlight_format import load_svmlight_files
 from ..utils import shuffle as shuffle_

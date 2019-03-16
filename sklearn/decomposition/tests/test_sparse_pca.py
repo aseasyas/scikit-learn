@@ -9,6 +9,11 @@ import numpy as np
 from sklearn.utils.testing import assert_array_almost_equal
 from sklearn.utils.testing import assert_equal
 from sklearn.utils.testing import assert_allclose
+<<<<<<< HEAD
+=======
+from sklearn.utils.testing import SkipTest
+from sklearn.utils.testing import assert_false
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import assert_warns_message
 from sklearn.utils.testing import if_safe_multiprocessing_with_blas
 

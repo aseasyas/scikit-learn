@@ -11,6 +11,11 @@ from scipy.stats.mstats import mquantiles
 
 from ..utils.extmath import cartesian
 from ..utils._joblib import Parallel, delayed
+<<<<<<< HEAD
+=======
+from ..externals import six
+from ..externals.six.moves import map, range, zip
+>>>>>>> upstream/0.20.X
 from ..utils import check_array
 from ..utils.validation import check_is_fitted
 from ..tree._tree import DTYPE

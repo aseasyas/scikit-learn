@@ -9,7 +9,11 @@ from scipy.sparse import csr_matrix
 
 from sklearn.exceptions import ConvergenceWarning
 from sklearn.utils.testing import (
+<<<<<<< HEAD
     assert_equal, assert_array_equal, assert_raises,
+=======
+    assert_equal, assert_false, assert_array_equal, assert_raises,
+>>>>>>> upstream/0.20.X
     assert_warns, assert_warns_message, assert_no_warnings)
 
 from sklearn.cluster.affinity_propagation_ import AffinityPropagation
@@ -164,6 +168,7 @@ def test_equal_similarities_and_preferences():
     # Same preferences
     assert _equal_similarities_and_preferences(S, np.array([0, 0]))
     assert _equal_similarities_and_preferences(S, np.array(0))
+<<<<<<< HEAD
 
 
 @pytest.mark.parametrize('centers', [csr_matrix(np.zeros((1, 10))),
@@ -180,3 +185,5 @@ def test_affinity_propagation_convergence_warning_dense_sparse(centers):
         assert_array_equal(ap.predict(X),
                            np.zeros(X.shape[0], dtype=int))
     assert len(record) == 0
+=======
+>>>>>>> upstream/0.20.X

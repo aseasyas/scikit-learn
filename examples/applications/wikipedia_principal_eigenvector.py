@@ -45,7 +45,12 @@ from scipy import sparse
 from joblib import Memory
 
 from sklearn.decomposition import randomized_svd
+<<<<<<< HEAD
 from urllib.request import urlopen
+=======
+from sklearn.externals.six.moves.urllib.request import urlopen
+from sklearn.externals.six import iteritems
+>>>>>>> upstream/0.20.X
 
 
 print(__doc__)

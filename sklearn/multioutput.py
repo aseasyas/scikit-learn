@@ -26,6 +26,10 @@ from .utils.metaestimators import if_delegate_has_method
 from .utils.validation import check_is_fitted, has_fit_parameter
 from .utils.multiclass import check_classification_targets
 from .utils._joblib import Parallel, delayed
+<<<<<<< HEAD
+=======
+from .externals import six
+>>>>>>> upstream/0.20.X
 
 __all__ = ["MultiOutputRegressor", "MultiOutputClassifier",
            "ClassifierChain", "RegressorChain"]

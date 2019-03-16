@@ -213,8 +213,11 @@
                     </li>
                     <li><em>December 2018.</em> scikit-learn 0.20.2 is available for download (<a href="whats_new.html#version-0-20-2">Changelog</a>)
                     </li>
+<<<<<<< HEAD
                     <li><em>November 2018.</em> scikit-learn 0.20.1 is available for download (<a href="whats_new.html#version-0-20-1">Changelog</a>).
                     </li>
+=======
+>>>>>>> upstream/0.20.X
                     <li><em>September 2018.</em> scikit-learn 0.20.0 is available for download (<a href="whats_new.html#version-0-20-0">Changelog</a>).
                     </li>
                     <li><em>July 2018.</em> scikit-learn 0.19.2 is available for download (<a href="whats_new.html#version-0-19">Changelog</a>).

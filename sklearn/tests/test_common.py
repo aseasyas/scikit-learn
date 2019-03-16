@@ -84,9 +84,16 @@ def _tested_estimators():
 
 def _generate_checks_per_estimator(check_generator, estimators):
     with ignore_warnings(category=(DeprecationWarning, FutureWarning)):
+<<<<<<< HEAD
         for name, estimator in estimators:
             for check in check_generator(name, estimator):
                 yield estimator, check
+=======
+        for name, Estimator in estimators:
+            estimator = Estimator()
+            for check in check_generator(name, estimator):
+                yield name, Estimator, check
+>>>>>>> upstream/0.20.X
 
 
 def _rename_partial(val):

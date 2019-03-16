@@ -6,17 +6,36 @@ from os.path import join
 from warnings import warn
 from contextlib import closing
 from functools import wraps
+<<<<<<< HEAD
 import itertools
 from collections.abc import Generator
 
 from urllib.request import urlopen, Request
+=======
+import warnings
+import itertools
+import inspect
+
+try:
+    # Python 3+
+    from urllib.request import urlopen, Request
+except ImportError:
+    # Python 2
+    from urllib2 import urlopen, Request
+
+>>>>>>> upstream/0.20.X
 
 import numpy as np
 import scipy.sparse
 
 from sklearn.externals import _arff
 from .base import get_data_home
+<<<<<<< HEAD
 from urllib.error import HTTPError
+=======
+from ..externals.six import string_types, PY2, BytesIO
+from ..externals.six.moves.urllib.error import HTTPError
+>>>>>>> upstream/0.20.X
 from ..utils import Bunch
 
 __all__ = ['fetch_openml']
@@ -48,7 +67,13 @@ def _retry_with_clean_cache(openml_path, data_home):
             except HTTPError:
                 raise
             except Exception:
+<<<<<<< HEAD
                 warn("Invalid cache, redownloading file", RuntimeWarning)
+=======
+                warnings.warn(
+                    "Invalid cache, redownloading file",
+                    RuntimeWarning)
+>>>>>>> upstream/0.20.X
                 local_path = _get_local_path(openml_path, data_home)
                 if os.path.exists(local_path):
                     os.unlink(local_path)
@@ -85,6 +110,11 @@ def _open_openml_url(openml_path, data_home):
     if data_home is None:
         fsrc = urlopen(req)
         if is_gzip(fsrc):
+<<<<<<< HEAD
+=======
+            if PY2:
+                fsrc = BytesIO(fsrc.read())
+>>>>>>> upstream/0.20.X
             return gzip.GzipFile(fileobj=fsrc, mode='rb')
         return fsrc
 
@@ -237,7 +267,11 @@ def _convert_arff_data(arff_data, col_slice_x, col_slice_y, shape=None):
     X : np.array or scipy.sparse.csr_matrix
     y : np.array
     """
+<<<<<<< HEAD
     if isinstance(arff_data, Generator):
+=======
+    if inspect.isgenerator(arff_data):
+>>>>>>> upstream/0.20.X
         if shape[0] == -1:
             count = -1
         else:
@@ -385,9 +419,22 @@ def _download_data_arff(file_id, sparse, data_home, encode_nominal=True):
             else:
                 return_type = _arff.DENSE_GEN
 
+<<<<<<< HEAD
             arff_file = _arff.loads(response.read().decode('utf-8'),
                                     encode_nominal=encode_nominal,
                                     return_type=return_type)
+=======
+            if PY2:
+                arff_file = _arff.load(
+                    response.read(),
+                    encode_nominal=encode_nominal,
+                    return_type=return_type,
+                )
+            else:
+                arff_file = _arff.loads(response.read().decode('utf-8'),
+                                        encode_nominal=encode_nominal,
+                                        return_type=return_type)
+>>>>>>> upstream/0.20.X
         return arff_file
 
     return _arff_load()

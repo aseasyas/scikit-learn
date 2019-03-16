@@ -141,7 +141,11 @@ class PassiveAggressiveClassifier(BaseSGDClassifier):
     >>> X, y = make_classification(n_features=4, random_state=0)
     >>> clf = PassiveAggressiveClassifier(max_iter=1000, random_state=0,
     ... tol=1e-3)
+<<<<<<< HEAD
     >>> clf.fit(X, y)  # doctest: +NORMALIZE_WHITESPACE
+=======
+    >>> clf.fit(X, y)
+>>>>>>> upstream/0.20.X
     PassiveAggressiveClassifier(C=1.0, average=False, class_weight=None,
                   early_stopping=False, fit_intercept=True, loss='hinge',
                   max_iter=1000, n_iter=None, n_iter_no_change=5, n_jobs=None,
@@ -380,7 +384,11 @@ class PassiveAggressiveRegressor(BaseSGDRegressor):
     >>> X, y = make_regression(n_features=4, random_state=0)
     >>> regr = PassiveAggressiveRegressor(max_iter=100, random_state=0,
     ... tol=1e-3)
+<<<<<<< HEAD
     >>> regr.fit(X, y)  # doctest: +NORMALIZE_WHITESPACE
+=======
+    >>> regr.fit(X, y)
+>>>>>>> upstream/0.20.X
     PassiveAggressiveRegressor(C=1.0, average=False, early_stopping=False,
                   epsilon=0.1, fit_intercept=True, loss='epsilon_insensitive',
                   max_iter=100, n_iter=None, n_iter_no_change=5,

@@ -27,6 +27,10 @@ from sklearn.utils.testing import assert_greater_equal
 from sklearn.utils.testing import assert_less_equal
 from sklearn.utils.testing import assert_raises
 from sklearn.utils.testing import assert_raises_regex
+<<<<<<< HEAD
+=======
+from sklearn.utils.testing import assert_false
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import assert_warns_message
 from sklearn.utils.testing import assert_no_warnings
 from sklearn.utils.testing import assert_allclose
@@ -448,6 +452,7 @@ def test_scaler_2d_arrays():
     assert_array_almost_equal(X_scaled.std(axis=0), [0., 1., 1., 1., 1.])
     # Check that X has not been copied
     assert X_scaled is not X
+<<<<<<< HEAD
 
 
 def test_scaler_float16_overflow():
@@ -473,6 +478,8 @@ def test_scaler_float16_overflow():
     # float16 precision is 2^-8 which is around 0.004. Thus only 2 decimals are
     # checked to account for precision differences.
     assert_array_almost_equal(X_scaled, X_scaled_f64, decimal=2)
+=======
+>>>>>>> upstream/0.20.X
 
 
 def test_handle_zeros_in_scale():

@@ -36,7 +36,16 @@ jobs:
     environment:
       - MINICONDA_PATH: ~/miniconda
       - CONDA_ENV_NAME: testenv
+<<<<<<< HEAD
       - PYTHON_VERSION: 3
+=======
+      - PYTHON_VERSION: "2"
+      - NUMPY_VERSION: "1.10"
+      - SCIPY_VERSION: "0.16"
+      - MATPLOTLIB_VERSION: "1.4"
+      - SCIKIT_IMAGE_VERSION: "0.11"
+      - PANDAS_VERSION: "0.17.1"
+>>>>>>> upstream/0.20.X
     steps:
       - checkout
       - run: ./build_tools/circle/checkout_merge_commit.sh
@@ -109,6 +118,7 @@ workflows:
   version: 2
   build-doc-and-deploy:
     jobs:
+<<<<<<< HEAD
       - lint
       - doc:
           requires:
@@ -116,6 +126,11 @@ workflows:
       - doc-min-dependencies:
           requires:
             - lint
+=======
+      - python3
+      - python2
+      - lint
+>>>>>>> upstream/0.20.X
       - pypy3:
           filters:
             branches:
@@ -123,7 +138,11 @@ workflows:
                 - 0.20.X
       - deploy:
           requires:
+<<<<<<< HEAD
             - doc
+=======
+            - python3
+>>>>>>> upstream/0.20.X
   pypy:
     triggers:
       - schedule:

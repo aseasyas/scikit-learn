@@ -9,6 +9,7 @@
 from functools import partial
 from distutils.version import LooseVersion
 
+import sys
 import warnings
 from abc import ABCMeta, abstractmethod
 
@@ -23,6 +24,10 @@ from ..metrics.pairwise import PAIRWISE_DISTANCE_FUNCTIONS
 from ..utils import check_X_y, check_array, gen_even_slices
 from ..utils.multiclass import check_classification_targets
 from ..utils.validation import check_is_fitted
+<<<<<<< HEAD
+=======
+from ..externals import six
+>>>>>>> upstream/0.20.X
 from ..exceptions import DataConversionWarning
 from ..utils._joblib import Parallel, delayed, effective_n_jobs
 from ..utils._joblib import __version__ as joblib_version
@@ -290,7 +295,11 @@ def _tree_query_parallel_helper(tree, data, n_neighbors, return_distance):
     return tree.query(data, n_neighbors, return_distance)
 
 
+<<<<<<< HEAD
 class KNeighborsMixin:
+=======
+class KNeighborsMixin(object):
+>>>>>>> upstream/0.20.X
     """Mixin for k-neighbors searches"""
 
     def _kneighbors_reduce_func(self, dist, start,
@@ -438,7 +447,11 @@ class KNeighborsMixin:
                     "%s does not work with sparse matrices. Densify the data, "
                     "or set algorithm='brute'" % self._fit_method)
             old_joblib = LooseVersion(joblib_version) < LooseVersion('0.12')
+<<<<<<< HEAD
             if old_joblib:
+=======
+            if sys.version_info < (3,) or old_joblib:
+>>>>>>> upstream/0.20.X
                 # Deal with change of API in joblib
                 check_pickle = False if old_joblib else None
                 delayed_query = delayed(_tree_query_parallel_helper,
@@ -579,7 +592,11 @@ def _tree_query_radius_parallel_helper(tree, data, radius, return_distance):
     return tree.query_radius(data, radius, return_distance)
 
 
+<<<<<<< HEAD
 class RadiusNeighborsMixin:
+=======
+class RadiusNeighborsMixin(object):
+>>>>>>> upstream/0.20.X
     """Mixin for radius-based neighbors searches"""
 
     def _radius_neighbors_reduce_func(self, dist, start,

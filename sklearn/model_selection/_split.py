@@ -551,7 +551,11 @@ class GroupKFold(_BaseKFold):
         test : ndarray
             The testing set indices for that split.
         """
+<<<<<<< HEAD
         return super().split(X, y, groups)
+=======
+        return super(GroupKFold, self).split(X, y, groups)
+>>>>>>> upstream/0.20.X
 
 
 class StratifiedKFold(_BaseKFold):
@@ -923,7 +927,11 @@ class LeaveOneGroupOut(BaseCrossValidator):
         test : ndarray
             The testing set indices for that split.
         """
+<<<<<<< HEAD
         return super().split(X, y, groups)
+=======
+        return super(LeaveOneGroupOut, self).split(X, y, groups)
+>>>>>>> upstream/0.20.X
 
 
 class LeavePGroupsOut(BaseCrossValidator):
@@ -1054,7 +1062,12 @@ class LeavePGroupsOut(BaseCrossValidator):
         test : ndarray
             The testing set indices for that split.
         """
+<<<<<<< HEAD
         return super().split(X, y, groups)
+=======
+        return super(LeavePGroupsOut, self).split(X, y, groups)
+
+>>>>>>> upstream/0.20.X
 
 
 class _RepeatedSplits(metaclass=ABCMeta):
@@ -1532,7 +1545,11 @@ class GroupShuffleSplit(ShuffleSplit):
         split. You can make the results identical by setting ``random_state``
         to an integer.
         """
+<<<<<<< HEAD
         return super().split(X, y, groups)
+=======
+        return super(GroupShuffleSplit, self).split(X, y, groups)
+>>>>>>> upstream/0.20.X
 
 
 def _approximate_mode(class_counts, n_draws, rng):

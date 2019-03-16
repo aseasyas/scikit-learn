@@ -18,6 +18,10 @@ from ..utils.validation import check_is_fitted
 from .base import _transform_selected
 from .label import _encode, _encode_check_unknown
 
+<<<<<<< HEAD
+=======
+range = six.moves.range
+>>>>>>> upstream/0.20.X
 
 __all__ = [
     'OneHotEncoder',
@@ -38,6 +42,7 @@ class _BaseEncoder(BaseEstimator, TransformerMixin):
         - convert list of strings to object dtype
         - check for missing values for object dtype data (check_array does
           not do that)
+<<<<<<< HEAD
         - return list of features (arrays): this list of features is
           constructed feature by feature to preserve the data types
           of pandas DataFrame columns, as otherwise information is lost
@@ -53,10 +58,27 @@ class _BaseEncoder(BaseEstimator, TransformerMixin):
             else:
                 X = X_temp
             needs_validation = False
+=======
+
+        """
+        X_temp = check_array(X, dtype=None)
+        if not hasattr(X, 'dtype') and np.issubdtype(X_temp.dtype, np.str_):
+            X = check_array(X, dtype=np.object)
+>>>>>>> upstream/0.20.X
         else:
             # pandas dataframe, do validation later column by column, in order
             # to keep the dtype information to be used in the encoder.
             needs_validation = True
+
+        if X.dtype == np.dtype('object'):
+            if not _get_config()['assume_finite']:
+                if _object_dtype_isnan(X).any():
+                    raise ValueError("Input contains NaN")
+
+        return X
+
+    def _fit(self, X, handle_unknown='error'):
+        X = self._check_X(X)
 
         n_samples, n_features = X.shape
         X_columns = []
@@ -91,11 +113,15 @@ class _BaseEncoder(BaseEstimator, TransformerMixin):
             if self._categories == 'auto':
                 cats = _encode(Xi)
             else:
+<<<<<<< HEAD
                 cats = np.array(self._categories[i], dtype=Xi.dtype)
                 if Xi.dtype != object:
                     if not np.all(np.sort(cats) == cats):
                         raise ValueError("Unsorted categories are not "
                                          "supported for numerical categories")
+=======
+                cats = np.array(self._categories[i], dtype=X.dtype)
+>>>>>>> upstream/0.20.X
                 if handle_unknown == 'error':
                     diff = _encode_check_unknown(Xi, cats)
                     if diff:
@@ -105,10 +131,18 @@ class _BaseEncoder(BaseEstimator, TransformerMixin):
             self.categories_.append(cats)
 
     def _transform(self, X, handle_unknown='error'):
+<<<<<<< HEAD
         X_list, n_samples, n_features = self._check_X(X)
 
         X_int = np.zeros((n_samples, n_features), dtype=np.int)
         X_mask = np.ones((n_samples, n_features), dtype=np.bool)
+=======
+        X = self._check_X(X)
+
+        _, n_features = X.shape
+        X_int = np.zeros_like(X, dtype=np.int)
+        X_mask = np.ones_like(X, dtype=np.bool)
+>>>>>>> upstream/0.20.X
 
         for i in range(n_features):
             Xi = X_list[i]
@@ -396,6 +430,7 @@ class OneHotEncoder(_BaseEncoder):
                     self._legacy_mode = False
                     self._categories = 'auto'
                 else:
+<<<<<<< HEAD
                     if self.drop is None:
                         msg = (
                             "The handling of integer data will change in "
@@ -428,6 +463,22 @@ class OneHotEncoder(_BaseEncoder):
                             "enable the future behavior."
                         )
                         raise ValueError(msg)
+=======
+                    msg = (
+                        "The handling of integer data will change in version "
+                        "0.22. Currently, the categories are determined "
+                        "based on the range [0, max(values)], while in the "
+                        "future they will be determined based on the unique "
+                        "values.\nIf you want the future behaviour and "
+                        "silence this warning, you can specify "
+                        "\"categories='auto'\".\n"
+                        "In case you used a LabelEncoder before this "
+                        "OneHotEncoder to convert the categories to integers, "
+                        "then you can now use the OneHotEncoder directly."
+                    )
+                    warnings.warn(msg, FutureWarning)
+                    self._legacy_mode = True
+>>>>>>> upstream/0.20.X
 
         # if user specified categorical_features -> always use legacy mode
         if self.categorical_features is not None:
@@ -554,7 +605,11 @@ class OneHotEncoder(_BaseEncoder):
                              "be able to use arbitrary integer values as "
                              "category identifiers.")
         n_samples, n_features = X.shape
+<<<<<<< HEAD
         if (isinstance(self._n_values, str) and
+=======
+        if (isinstance(self._n_values, six.string_types) and
+>>>>>>> upstream/0.20.X
                 self._n_values == 'auto'):
             n_values = np.max(X, axis=0) + 1
         elif isinstance(self._n_values, numbers.Integral):
@@ -589,7 +644,11 @@ class OneHotEncoder(_BaseEncoder):
                                 shape=(n_samples, indices[-1]),
                                 dtype=self.dtype).tocsr()
 
+<<<<<<< HEAD
         if (isinstance(self._n_values, str) and
+=======
+        if (isinstance(self._n_values, six.string_types) and
+>>>>>>> upstream/0.20.X
                 self._n_values == 'auto'):
             mask = np.array(out.sum(axis=0)).ravel() != 0
             active_features = np.where(mask)[0]
@@ -667,7 +726,11 @@ class OneHotEncoder(_BaseEncoder):
         out = sparse.coo_matrix((data, (row_indices, column_indices)),
                                 shape=(n_samples, indices[-1]),
                                 dtype=self.dtype).tocsr()
+<<<<<<< HEAD
         if (isinstance(self._n_values, str) and
+=======
+        if (isinstance(self._n_values, six.string_types) and
+>>>>>>> upstream/0.20.X
                 self._n_values == 'auto'):
             out = out[:, self._active_features_]
 

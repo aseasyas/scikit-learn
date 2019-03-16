@@ -23,9 +23,15 @@ from scipy import linalg
 from scipy import sparse
 from scipy.special import expit
 
+<<<<<<< HEAD
 from ..utils._joblib import Parallel, delayed
 from ..base import (BaseEstimator, ClassifierMixin, RegressorMixin,
                     MultiOutputMixin)
+=======
+from ..externals import six
+from ..utils._joblib import Parallel, delayed
+from ..base import BaseEstimator, ClassifierMixin, RegressorMixin
+>>>>>>> upstream/0.20.X
 from ..utils import check_array, check_X_y
 from ..utils.validation import FLOAT_DTYPES
 from ..utils import check_random_state

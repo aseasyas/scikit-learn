@@ -8,6 +8,10 @@ from re import escape
 from sklearn.utils.testing import assert_array_equal
 from sklearn.utils.testing import assert_equal
 from sklearn.utils.testing import assert_almost_equal
+<<<<<<< HEAD
+=======
+from sklearn.utils.testing import assert_false
+>>>>>>> upstream/0.20.X
 from sklearn.utils.testing import assert_raises
 from sklearn.utils.testing import assert_warns
 from sklearn.utils.testing import assert_greater
@@ -360,7 +364,11 @@ def test_ovr_multilabel_predict_proba():
                                                     probability=False))
         assert not hasattr(decision_only, 'predict_proba')
         decision_only.fit(X_train, Y_train)
+<<<<<<< HEAD
         assert not hasattr(decision_only, 'predict_proba')
+=======
+        assert_false(hasattr(decision_only, 'predict_proba'))
+>>>>>>> upstream/0.20.X
         assert hasattr(decision_only, 'decision_function')
 
         # Estimator which can get predict_proba enabled after fitting

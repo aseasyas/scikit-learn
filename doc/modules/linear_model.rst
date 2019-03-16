@@ -185,7 +185,11 @@ for another implementation::
 
     >>> from sklearn import linear_model
     >>> reg = linear_model.Lasso(alpha=0.1)
+<<<<<<< HEAD
     >>> reg.fit([[0, 0], [1, 1]], [0, 1])  # doctest: +NORMALIZE_WHITESPACE
+=======
+    >>> reg.fit([[0, 0], [1, 1]], [0, 1])
+>>>>>>> upstream/0.20.X
     Lasso(alpha=0.1, copy_X=True, fit_intercept=True, max_iter=1000,
        normalize=False, positive=False, precompute=False, random_state=None,
        selection='cyclic', tol=0.0001, warm_start=False)
@@ -789,9 +793,14 @@ than other solvers for large datasets, when both the number of samples and the
 number of features are large.
 
 The "saga" solver [7]_ is a variant of "sag" that also supports the
+<<<<<<< HEAD
 non-smooth `penalty="l1"`. This is therefore the solver of choice for sparse
 multinomial logistic regression. It is also the only solver that supports
 `penalty="elasticnet"`.
+=======
+non-smooth `penalty="l1"` option. This is therefore the solver of choice
+for sparse multinomial logistic regression.
+>>>>>>> upstream/0.20.X
 
 The "lbfgs" is an optimization algorithm that approximates the 
 Broyden–Fletcher–Goldfarb–Shanno algorithm [8]_, which belongs to
@@ -813,10 +822,13 @@ The following table summarizes the penalties supported by each solver:
 +------------------------------+-----------------+-------------+-----------------+-----------+------------+
 | OVR + L1 penalty             |       yes       |     no      |       no        |    no     |    yes     |
 +------------------------------+-----------------+-------------+-----------------+-----------+------------+
+<<<<<<< HEAD
 | Elastic-Net                  |       no        |     no      |       no        |    no     |    yes     |
 +------------------------------+-----------------+-------------+-----------------+-----------+------------+
 | No penalty ('none')          |       no        |     yes     |       yes       |    yes    |    yes     |
 +------------------------------+-----------------+-------------+-----------------+-----------+------------+
+=======
+>>>>>>> upstream/0.20.X
 | **Behaviors**                |                                                                          |
 +------------------------------+-----------------+-------------+-----------------+-----------+------------+
 | Penalize the intercept (bad) |       yes       |     no      |       no        |    no     |    no      |
@@ -829,7 +841,11 @@ The following table summarizes the penalties supported by each solver:
 The "lbfgs" solver is used by default for its robustness. For large datasets
 the "saga" solver is usually faster.
 For large dataset, you may also consider using :class:`SGDClassifier`
+<<<<<<< HEAD
 with 'log' loss, which might be even faster but requires more tuning.
+=======
+with 'log' loss, which might be even faster but require more tuning.
+>>>>>>> upstream/0.20.X
 
 .. topic:: Examples:
 
