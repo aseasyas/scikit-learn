@@ -520,7 +520,6 @@ def test_tfidf_vectorizer_setters():
 
 
 @fails_if_pypy
-@ignore_warnings(category=DeprecationWarning)
 def test_hashing_vectorizer():
     v = HashingVectorizer()
     X = v.transform(ALL_FOOD_DOCS)
@@ -540,7 +539,7 @@ def test_hashing_vectorizer():
         assert_almost_equal(np.linalg.norm(X[0].data, 2), 1.0)
 
     # Check vectorization with some non-default parameters
-    v = HashingVectorizer(ngram_range=(1, 2), non_negative=True, norm='l1')
+    v = HashingVectorizer(ngram_range=(1, 2), norm='l1')
     X = v.transform(ALL_FOOD_DOCS)
     assert_equal(X.shape, (len(ALL_FOOD_DOCS), v.n_features))
     assert_equal(X.dtype, v.dtype)
@@ -551,7 +550,7 @@ def test_hashing_vectorizer():
     assert ngrams_nnz < 2 * token_nnz
 
     # makes the feature values bounded
-    assert np.min(X.data) > 0
+    assert np.min(X.data) > -1
     assert np.max(X.data) < 1
 
     # Check that the rows are normalized
@@ -703,12 +702,10 @@ def test_count_binary_occurrences():
 
 
 @fails_if_pypy
-@ignore_warnings(category=DeprecationWarning)
 def test_hashed_binary_occurrences():
     # by default multiple occurrences are counted as longs
     test_data = ['aaabc', 'abbde']
-    vect = HashingVectorizer(analyzer='char', non_negative=True,
-                             norm=None)
+    vect = HashingVectorizer(alternate_sign=False, analyzer='char', norm=None)
     X = vect.transform(test_data)
     assert_equal(np.max(X[0:1].data), 3)
     assert_equal(np.max(X[1:2].data), 2)
@@ -716,15 +713,15 @@ def test_hashed_binary_occurrences():
 
     # using boolean features, we can fetch the binary occurrence info
     # instead.
-    vect = HashingVectorizer(analyzer='char', non_negative=True, binary=True,
-                             norm=None)
+    vect = HashingVectorizer(analyzer='char', alternate_sign=False,
+                             binary=True, norm=None)
     X = vect.transform(test_data)
     assert_equal(np.max(X.data), 1)
     assert_equal(X.dtype, np.float64)
 
     # check the ability to change the dtype
-    vect = HashingVectorizer(analyzer='char', non_negative=True, binary=True,
-                             norm=None, dtype=np.float64)
+    vect = HashingVectorizer(analyzer='char', alternate_sign=False,
+                             binary=True, norm=None, dtype=np.float64)
     X = vect.transform(test_data)
     assert_equal(X.dtype, np.float64)
 
@@ -843,7 +840,6 @@ def test_vectorizer_pipeline_cross_validation():
 
 
 @fails_if_pypy
-@ignore_warnings(category=DeprecationWarning)
 def test_vectorizer_unicode():
     # tests that the count vectorizer works with cyrillic.
     document = (
@@ -856,14 +852,14 @@ def test_vectorizer_unicode():
     X_counted = vect.fit_transform([document])
     assert_equal(X_counted.shape, (1, 12))
 
-    vect = HashingVectorizer(norm=None, non_negative=True)
+    vect = HashingVectorizer(norm=None, alternate_sign=False)
     X_hashed = vect.transform([document])
     assert_equal(X_hashed.shape, (1, 2 ** 20))
 
     # No collisions on such a small dataset
     assert_equal(X_counted.nnz, X_hashed.nnz)
 
-    # When norm is None and non_negative, the tokens are counted up to
+    # When norm is None and not alternate_sign, the tokens are counted up to
     # collisions
     assert_array_equal(np.sort(X_counted.data), np.sort(X_hashed.data))
 
